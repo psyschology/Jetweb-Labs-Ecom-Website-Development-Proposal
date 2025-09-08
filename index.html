@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jetweb Labs – Custom Web Development & Digital Solutions</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Playwrite US Modern', sans-serif;
+      background: radial-gradient(circle at top, #0a0f2c, #000000 70%);
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
+    .section-title {
+      @apply text-4xl md:text-5xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500;
+    }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Style for the interactive FAQ answer panel */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- HEADER -->
+  <header class="bg-black/30 backdrop-blur-lg shadow-lg fixed w-full z-50 transition-all duration-300">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center space-x-3">
+        <!-- Using a placeholder logo. Replace with your logo image. -->
+        <img src="jetweb.png" onerror="this.onerror=null; this.src='https://placehold.co/50x50/1e293b/FFFFFF?text=JL';" alt="Jetweb Labs Logo" class="h-10 w-10 rounded-full border-2 border-purple-400">
+        <span class="text-2xl font-bold text-white">Jetweb Labs</span>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-6 text-white font-medium">
+        <a href="#plans" class="hover:text-purple-300 transition">Plans</a>
+        <a href="#process" class="hover:text-purple-300 transition">Process</a>
+        <a href="#case-studies" class="hover:text-purple-300 transition">Case Studies</a>
+        <a href="#faq" class="hover:text-purple-300 transition">FAQ</a>
+        <a href="#contact" class="hover:text-purple-300 transition">Contact</a>
+        <a href="https://calendly.com/your-link" target="_blank" class="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-5 py-2 rounded-lg font-bold hover:scale-105 transition-transform">Schedule a Call</a>
+      </nav>
+      
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden text-white z-50">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-screen bg-black/90 backdrop-blur-xl">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl text-white">
+            <a href="#plans" class="mobile-link">Plans</a>
+            <a href="#process" class="mobile-link">Process</a>
+            <a href="#case-studies" class="mobile-link">Case Studies</a>
+            <a href="#faq" class="mobile-link">FAQ</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+            <a href="https://calendly.com/your-link" target="_blank" class="mt-6 bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-4 rounded-xl font-bold">Schedule a Call</a>
+        </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="relative text-center pt-48 pb-32 px-6 overflow-hidden">
+        <!-- Background decorative glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-purple-900/40 blur-[150px] rounded-full -z-10"></div>
+        <div class="animate-on-scroll">
+            <h2 class="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 mb-6 leading-tight">Crafting Digital Experiences That Convert</h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-10">
+                At <span class="font-semibold text-purple-400">Jetweb Labs</span>, we transform your vision into a high-performance, scalable online platform. Let's build something exceptional together.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#plans" class="w-full sm:w-auto inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-4 rounded-xl font-bold hover:scale-105 shadow-lg shadow-purple-500/20 transition-transform">Explore Our Plans</a>
+                <a href="https://calendly.com/your-link" target="_blank" class="w-full sm:w-auto inline-block bg-gray-700/50 border border-gray-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-gray-700 transition">Schedule a Discovery Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANS SECTION -->
+    <section id="plans" class="container mx-auto px-6 py-24">
+        <div class="animate-on-scroll">
+            <h2 class="section-title">Find the Perfect Plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Plan Card: Starter -->
+                <div class="flex flex-col rounded-2xl shadow-xl p-8 border border-gray-700 bg-gray-900/50 hover:-translate-y-2 transition-transform hover:shadow-purple-500/20">
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-bold text-white mb-2">Starter Landing Page</h3>
+                        <p class="text-gray-400 mb-4 h-12">Ideal for validating ideas and generating leads quickly via WhatsApp.</p>
+                        <p class="text-4xl font-bold text-purple-400 my-4">₹12,000</p>
+                        <ul class="text-gray-300 mb-8 space-y-3">
+                            <li class="flex items-center"><span class="text-purple-400 mr-3">✔</span> Responsive one-page site</li>
+                            <li class="flex items-center"><span class="text-purple-400 mr-3">✔</span> WhatsApp chat integration</li>
+                            <li class="flex items-center"><span class="text-purple-400 mr-3">✔</span> Google Business Profile setup</li>
+                            <li class="flex items-center"><span class="text-purple-400 mr-3">✔</span> Deployment & hosting support</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="mt-auto w-full text-center bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition">Choose Plan</a>
+                </div>
+
+                <!-- Plan Card: E-commerce -->
+                <div class="flex flex-col rounded-2xl shadow-xl p-8 border border-gray-700 bg-gray-900/50 hover:-translate-y-2 transition-transform hover:shadow-pink-500/20">
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-bold text-white mb-2">E-commerce Platform</h3>
+                        <p class="text-gray-400 mb-4 h-12">Launch a powerful and secure online store to sell your products globally.</p>
+                        <p class="text-4xl font-bold text-pink-400 my-4">₹65,000</p>
+                        <ul class="text-gray-300 mb-8 space-y-3">
+                            <li class="flex items-center"><span class="text-pink-400 mr-3">✔</span> Shopify or WooCommerce setup</li>
+                            <li class="flex items-center"><span class="text-pink-400 mr-3">✔</span> Up to 100 products uploaded</li>
+                            <li class="flex items-center"><span class="text-pink-400 mr-3">✔</span> Secure Indian payment gateway</li>
+                            <li class="flex items-center"><span class="text-pink-400 mr-3">✔</span> Analytics & Basic SEO tools</li>
+                        </ul>
+                    </div>
+                    <a href="https://calendly.com/your-link" target="_blank" class="mt-auto w-full text-center bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-lg font-bold hover:scale-105 transition-transform">Book a Consultation</a>
+                </div>
+
+                <!-- Plan Card: Custom -->
+                <div class="flex flex-col rounded-2xl shadow-xl p-8 border border-gray-700 bg-gray-900/50 hover:-translate-y-2 transition-transform hover:shadow-purple-500/20">
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-bold text-white mb-2">Custom Solution</h3>
+                        <p class="text-gray-400 mb-4 h-12">A bespoke digital platform engineered for unique business logic and scalability.</p>
+                        <p class="text-4xl font-bold text-purple-400 my-4">From ₹3,50,000</p>
+                        <ul class="text-gray-300 mb-8 space-y-3">
+                            <li class="flex items-center"><span class="text-purple-400 mr-3">✔</span> Bespoke UI/UX & branding</li>
+                            <li class="flex items-center"><span class="text-purple-400 mr-3">✔</span> Custom backend & admin panel</li>
+                            <li class="flex items-center"><span class="text-purple-400 mr-3">✔</span> Third-party API integrations</li>
+                            <li class="flex items-center"><span class="text-purple-400 mr-3">✔</span> Scalable cloud architecture</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="mt-auto w-full text-center bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition">Request a Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PROCESS SECTION -->
+    <section id="process" class="container mx-auto px-6 py-24">
+        <div class="animate-on-scroll">
+            <h2 class="section-title">Our 4-Step Success Blueprint</h2>
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Connecting line for desktop view -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-700 -translate-y-1/2"></div>
+                <div class="grid md:grid-cols-4 gap-8 text-center relative">
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 flex items-center justify-center bg-gray-800 border-2 border-purple-500 rounded-full text-2xl mb-4 z-10">1</div>
+                        <h3 class="font-bold text-lg mb-2">Discovery & Strategy</h3>
+                        <p class="text-gray-400 text-sm">We dive deep into your goals, audience, and market to build a winning strategy.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 flex items-center justify-center bg-gray-800 border-2 border-purple-500 rounded-full text-2xl mb-4 z-10">2</div>
+                        <h3 class="font-bold text-lg mb-2">Design & Prototyping</h3>
+                        <p class="text-gray-400 text-sm">Crafting intuitive, beautiful user interfaces that users love to interact with.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 flex items-center justify-center bg-gray-800 border-2 border-purple-500 rounded-full text-2xl mb-4 z-10">3</div>
+                        <h3 class="font-bold text-lg mb-2">Development & Testing</h3>
+                        <p class="text-gray-400 text-sm">Writing clean, scalable code and rigorously testing for a flawless launch.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 flex items-center justify-center bg-gray-800 border-2 border-purple-500 rounded-full text-2xl mb-4 z-10">4</div>
+                        <h3 class="font-bold text-lg mb-2">Launch & Scale</h3>
+                        <p class="text-gray-400 text-sm">Deploying your project and providing ongoing support to ensure growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES SECTION -->
+    <section id="case-studies" class="container mx-auto px-6 py-24">
+        <div class="animate-on-scroll">
+            <h2 class="section-title">Proven Results</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 bg-gray-900/50 rounded-xl shadow-lg border border-gray-800 transform hover:-translate-y-2 transition-transform">
+                    <h3 class="text-xl font-bold mb-2 text-purple-400">Fintech Startup Scaled to 1M Users</h3>
+                    <p class="text-gray-400">Engineered a custom platform that handled rapid user growth within the first 6 months, ensuring stability and performance under pressure.</p>
+                </div>
+                <div class="p-8 bg-gray-900/50 rounded-xl shadow-lg border border-gray-800 transform hover:-translate-y-2 transition-transform">
+                    <h3 class="text-xl font-bold mb-2 text-pink-400">E-commerce Brand Sales Grew by 250%</h3>
+                    <p class="text-gray-400">Revamped an online store with a focus on conversion rate optimization, resulting in a significant boost in sales and customer engagement.</p>
+                </div>
+                <div class="p-8 bg-gray-900/50 rounded-xl shadow-lg border border-gray-800 transform hover:-translate-y-2 transition-transform">
+                    <h3 class="text-xl font-bold mb-2 text-purple-400">Global SaaS CRM Deployed</h3>
+                    <p class="text-gray-400">Delivered a scalable, enterprise-grade CRM solution that now powers distributed teams across multiple continents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ SECTION -->
+    <section id="faq" class="container mx-auto px-6 py-24">
+        <div class="animate-on-scroll">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="space-y-4 max-w-3xl mx-auto">
+                <div class="bg-gray-900/50 border border-gray-700 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-white">
+                        <span>How long will my project take to complete?</span>
+                        <svg class="faq-arrow w-5 h-5 text-gray-400 transition-transform transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div class="faq-answer px-5 pb-5 text-gray-400">
+                        <p>Typical timelines are: Starter Landing Pages (~1 week), E-commerce Platforms (~3-4 weeks), and Custom Solutions (10-12 weeks). These can vary based on complexity.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900/50 border border-gray-700 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-white">
+                        <span>Do you provide ongoing support and maintenance?</span>
+                        <svg class="faq-arrow w-5 h-5 text-gray-400 transition-transform transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div class="faq-answer px-5 pb-5 text-gray-400">
+                        <p>Yes, all our projects include a 30-day post-launch support period. We also offer flexible Annual Maintenance Contracts (AMCs) for long-term peace of mind.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900/50 border border-gray-700 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-white">
+                        <span>Can the platform you build scale with my business?</span>
+                        <svg class="faq-arrow w-5 h-5 text-gray-400 transition-transform transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div class="faq-answer px-5 pb-5 text-gray-400">
+                        <p>Absolutely. Scalability is at the core of our development philosophy. We use modern, robust architectures that are designed to handle growth in traffic and complexity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & CTA SECTION -->
+    <section id="contact" class="container mx-auto px-6 py-24">
+      <div class="animate-on-scroll max-w-4xl mx-auto text-center bg-gray-900/50 border border-gray-700 rounded-2xl shadow-2xl p-8 md:p-16">
+          <h2 class="text-4xl font-bold mb-4 text-white">Ready to Build Your Vision?</h2>
+          <p class="text-lg text-gray-300 mb-8">
+              The best way to start is with a conversation. Schedule a free, no-obligation discovery call to discuss your project with our experts.
+          </p>
+          <a href="https://calendly.com/your-link" target="_blank" class="mb-12 inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:scale-105 shadow-lg shadow-purple-500/20 transition-transform">
+              🗓️ Schedule Your Free Call
+          </a>
+          <div class="text-center text-gray-400 mb-8">
+              <span class="inline-block w-20 h-px bg-gray-700 align-middle"></span>
+              <span class="mx-4">Or, send us a message</span>
+              <span class="inline-block w-20 h-px bg-gray-700 align-middle"></span>
+          </div>
+
+          <form id="contact-form" class="space-y-4 max-w-lg mx-auto">
+              <!-- IMPORTANT: Get a free access key from web3forms.com and replace it here -->
+              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE"> 
+              <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition">
+              <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition">
+              <textarea name="message" placeholder="Tell us about your project..." rows="4" required class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition"></textarea>
+              <button type="submit" class="w-full bg-white text-purple-700 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Send Message</button>
+          </form>
+          <div id="form-result" class="mt-4 text-center"></div>
+      </div>
+    </section>
+  </main>
+
+   <!-- FOOTER -->
+  <footer class="bg-black border-t border-gray-800 mt-20">
+    <div class="container mx-auto px-6 py-10 text-center text-gray-400">
+      <a href="#" class="inline-block mb-4">
+        <img src="https://placehold.co/50x50/1e293b/FFFFFF?text=JL" onerror="this.onerror=null; this.src='https://placehold.co/50x50/1e293b/FFFFFF?text=JL';" alt="Jetweb Labs Logo" class="h-12 w-12 rounded-full">
+      </a>
+      <p class="text-white font-semibold mb-2">&copy; 2025 Jetweb Labs. All Rights Reserved.</p>
+      <p class="text-gray-500 text-sm">Crafting the future of the web from India.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // 1. Scroll Animation Logic
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach((el) => scrollObserver.observe(el));
+
+      // 2. Mobile Menu Toggle
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
+      
+      const toggleMenu = () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        document.body.style.overflow = isHidden ? '' : 'hidden';
+      };
+
+      menuButton.addEventListener('click', toggleMenu);
+      mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+      // 3. Interactive FAQ Accordion Logic
+      document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const answer = button.nextElementSibling;
+          const arrow = button.querySelector('.faq-arrow');
+          
+          arrow.classList.toggle('rotate-180');
+
+          if (answer.style.maxHeight) {
+            answer.style.maxHeight = null;
+          } else {
+            // Set max-height to its scrollHeight to create the expand animation
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          }
+        });
+      });
+      
+      // 4. Robust Contact Form Submission (using Web3Forms for reliability)
+      const form = document.getElementById('contact-form');
+      const result = document.getElementById('form-result');
+
+      form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          // Do not submit if the access key is the placeholder
+          if (form.elements['access_key'].value === "YOUR_ACCESS_KEY_HERE") {
+              result.innerHTML = "❌ Please configure the form access key.";
+              result.className = "text-red-400";
+              return;
+          }
+
+          const formData = new FormData(form);
+          const object = {};
+          formData.forEach((value, key) => { object[key] = value; });
+          const json = JSON.stringify(object);
+          result.innerHTML = "Sending...";
+          result.className = "text-yellow-400";
+          result.style.display = 'block';
+
+          fetch('https://api.web3forms.com/submit', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                  body: json
+              })
+              .then(async (response) => {
+                  let jsonResponse = await response.json();
+                  if (response.status == 200) {
+                      result.innerHTML = "✔️ Message sent successfully!";
+                      result.className = "text-green-400";
+                  } else {
+                      result.innerHTML = `❌ Error: ${jsonResponse.message}`;
+                      result.className = "text-red-400";
+                  }
+              })
+              .catch(error => {
+                  result.innerHTML = "❌ Something went wrong!";
+                  result.className = "text-red-400";
+              })
+              .then(function() {
+                  form.reset();
+                  setTimeout(() => {
+                      result.style.display = 'none';
+                  }, 5000);
+              });
+      });
+
+    });
+  </script>
+</body>
+</html>
