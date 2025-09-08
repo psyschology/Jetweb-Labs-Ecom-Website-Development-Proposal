@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jetweb Labs & jetweb.in | AI-Powered Brand Guide</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #05081A; /* A slightly lighter dark blue */
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playwrite US Modern', cursive;
+    }
+    .brand-title {
+      @apply text-5xl md:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500;
+    }
+    .section-title {
+      @apply text-3xl md:text-4xl font-bold mb-8 border-b-2 border-gray-700 pb-4 flex items-center gap-x-3;
+    }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .color-swatch {
+        transition: transform 0.2s ease-in-out;
+    }
+    .color-swatch:hover {
+        transform: scale(1.05);
+    }
+    .gemini-output {
+        white-space: pre-wrap;
+        background: rgba(0,0,0,0.2);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        border: 1px solid #374151;
+        min-height: 100px;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- HERO SECTION -->
+  <header class="text-center pt-24 pb-16 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 -z-10" style="background: radial-gradient(circle at top, #0a0f2c, #05081A 70%);"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-purple-900/30 blur-[150px] rounded-full -z-10"></div>
+    <div class="animate-on-scroll">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Jetweb Brand Universe</h1>
+      <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+        The official guide to our visual identity, now supercharged with AI. This page contains assets, guidelines, and creative tools for <span class="font-semibold text-purple-400">Jetweb Labs</span> and <span class="font-semibold text-pink-400">jetweb.in</span>.
+      </p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-12">
+
+    <!-- JETWEB LABS - MAIN BRAND -->
+    <section id="jetweb-labs" class="mb-24 animate-on-scroll">
+      <h2 class="brand-title">Jetweb Labs</h2>
+      <p class="text-gray-400 text-lg -mt-4 mb-12">Our parent brand. Represents innovation, scalability, and comprehensive digital solutions.</p>
+      
+      <!-- Logo Section -->
+      <div class="mb-16">
+        <h3 class="section-title text-white"><i data-lucide="image"></i>Logo</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div class="bg-gray-900/50 p-8 rounded-2xl text-center border border-gray-800">
+            <h4 class="font-bold text-xl mb-4 text-white">Primary Logo</h4>
+            <img src="jetweb.png" onerror="this.src='https://placehold.co/800x800/05081a/e5e7eb?text=Jetweb+Labs+Logo'" alt="Jetweb Labs Primary Logo" class="mx-auto max-w-xs w-full h-auto">
+            <p class="text-sm text-gray-500 mt-4">Use on dark backgrounds for maximum impact.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-8">
+            <div class="bg-gray-900/50 p-6 rounded-2xl text-center border border-gray-800">
+              <h4 class="font-bold text-lg mb-4 text-white">Monochrome</h4>
+              <img src="jetweb.png" alt="Monochrome Logo" class="mx-auto w-32 h-32 opacity-80">
+              <p class="text-sm text-gray-500 mt-2">For single-color printing or overlays.</p>
+            </div>
+            <div class="bg-gray-900/50 p-6 rounded-2xl text-center border border-gray-800">
+              <h4 class="font-bold text-lg mb-4 text-white">Favicon</h4>
+              <img src="jetweb.png" alt="Favicon" class="mx-auto w-32 h-32 rounded-full">
+              <p class="text-sm text-gray-500 mt-2">For browser tabs and app icons.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color Palette -->
+      <div class="mb-16">
+          <h3 class="section-title text-white"><i data-lucide="palette"></i>Color Palette</h3>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              <!-- Swatches will be generated by JS -->
+          </div>
+      </div>
+      
+      <!-- Typography -->
+      <div class="mb-16">
+        <h3 class="section-title text-white"><i data-lucide="type"></i>Typography</h3>
+        <div class="grid md:grid-cols-2 gap-10">
+          <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
+            <h4 class="text-2xl font-bold mb-2">Headings</h4>
+            <p class="text-5xl lg:text-6xl font-bold" style="font-family: 'Playwrite US Modern', cursive;">Playwrite US Modern</p>
+            <p class="text-gray-400 mt-4">Used for all primary titles, headlines, and impactful statements to convey creativity and personality.</p>
+          </div>
+          <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
+            <h4 class="text-2xl font-bold mb-2">Body & UI</h4>
+            <p class="text-5xl lg:text-6xl font-medium">Inter</p>
+            <p class="text-gray-400 mt-4">Used for paragraphs, buttons, and interface elements to ensure maximum readability and a clean user experience.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- ✨ AI Brand Tools Section -->
+      <div class="mb-16">
+        <h3 class="section-title text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500"><i data-lucide="sparkles"></i>AI Brand Tools</h3>
+        <div class="space-y-12">
+            <!-- Brand Voice Generator -->
+            <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
+                <h4 class="text-2xl font-bold mb-4 text-white">Brand Voice Generator</h4>
+                <p class="text-gray-400 mb-4">Paste any text below and our AI will rewrite it to match the <span class="font-semibold text-purple-400">Jetweb Labs</span> tone: innovative, professional, and forward-thinking.</p>
+                <textarea id="voice-input" rows="5" placeholder="Enter your text here..." class="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 focus:ring-2 focus:ring-purple-500 outline-none transition"></textarea>
+                <button id="generate-voice-btn" class="mt-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-2 rounded-lg font-bold hover:scale-105 transition-transform flex items-center gap-x-2">
+                    <i data-lucide="wand-2" class="w-5 h-5"></i>
+                    <span>✨ Generate Tone</span>
+                </button>
+                <div class="mt-6">
+                    <h5 class="font-bold text-lg mb-2 text-white">Generated Text:</h5>
+                    <div id="voice-output" class="gemini-output text-gray-300">The AI-generated text will appear here.</div>
+                </div>
+            </div>
+            
+            <!-- Social Media Idea Generator -->
+            <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
+                <h4 class="text-2xl font-bold mb-4 text-white">Social Media Post Generator</h4>
+                <p class="text-gray-400 mb-4">Stuck for content ideas? Generate a batch of fresh social media post ideas for Jetweb Labs targeted at tech startups.</p>
+                <button id="generate-social-btn" class="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-6 py-2 rounded-lg font-bold hover:scale-105 transition-transform flex items-center gap-x-2">
+                    <i data-lucide="thumbs-up" class="w-5 h-5"></i>
+                    <span>✨ Get Ideas</span>
+                </button>
+                <div class="mt-6">
+                    <h5 class="font-bold text-lg mb-2 text-white">Generated Ideas:</h5>
+                    <div id="social-output" class="gemini-output text-gray-300">Click the button to generate social media post ideas.</div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JETWEB.IN - SUB BRAND -->
+    <section id="jetweb-in" class="mb-24 animate-on-scroll">
+      <h2 class="brand-title" style="background-image: linear-gradient(to right, #2F80ED, #FF6600)">jetweb.in</h2>
+      <p class="text-gray-400 text-lg -mt-4 mb-12">Our specialized sub-brand. Represents speed, direct web solutions, and market-focused products.</p>
+      
+      <!-- Logo Section -->
+      <div class="mb-16">
+        <h3 class="section-title text-white"><i data-lucide="image"></i>Logo</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div class="bg-gray-900/50 p-8 rounded-2xl text-center border border-gray-800">
+            <h4 class="font-bold text-xl mb-4 text-white">Primary Logo</h4>
+            <img src="jet.png" onerror="this.src='https://placehold.co/800x800/05081a/e5e7eb?text=jetweb.in+Logo'" alt="jetweb.in Primary Logo" class="mx-auto max-w-xs w-full h-auto">
+            <p class="text-sm text-gray-500 mt-4">Dynamic and action-oriented. Use with confidence.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-8">
+             <div class="bg-gray-900/50 p-6 rounded-2xl text-center border border-gray-800">
+              <h4 class="font-bold text-lg mb-4 text-white">Monochrome</h4>
+              <img src="jet.png" alt="Monochrome Logo" class="mx-auto w-32 h-32 opacity-80">
+              <p class="text-sm text-gray-500 mt-2">Ideal for simple, one-color applications.</p>
+            </div>
+            <div class="bg-gray-900/50 p-6 rounded-2xl text-center border border-gray-800">
+              <h4 class="font-bold text-lg mb-4 text-white">Icon Only</h4>
+              <img src="jet.png" alt="Icon Only" class="mx-auto w-32 h-32 rounded-full">
+              <p class="text-sm text-gray-500 mt-2">For use when space is limited.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOADABLE ASSETS -->
+    <section id="assets" class="animate-on-scroll">
+      <h2 class="brand-title">Brand Assets</h2>
+      <p class="text-gray-400 text-lg -mt-4 mb-12">Download official brand assets. Please use these in accordance with the guidelines.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 flex items-center justify-between">
+          <div>
+            <h4 class="text-xl font-bold text-white">Logos</h4>
+            <p class="text-gray-400">All variations (SVG, PNG)</p>
+          </div>
+          <a href="#" class="bg-purple-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-purple-700 transition">Download</a>
+        </div>
+        <div class="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 flex items-center justify-between">
+          <div>
+            <h4 class="text-xl font-bold text-white">Fonts</h4>
+            <p class="text-gray-400">Web & Desktop files</p>
+          </div>
+          <a href="#" class="bg-purple-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-purple-700 transition">Download</a>
+        </div>
+        <div class="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 flex items-center justify-between">
+          <div>
+            <h4 class="text-xl font-bold text-white">Full Brand Kit</h4>
+            <p class="text-gray-400">Includes all assets (ZIP)</p>
+          </div>
+          <a href="#" class="bg-pink-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-pink-700 transition">Download</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  
+  <footer class="text-center py-10 mt-16 border-t border-gray-800">
+      <p class="text-gray-500">&copy; 2025 Jetweb Labs. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+
+      // --- 1. CORE UI LOGIC ---
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+
+      const palettes = {
+          'jetweb-labs': [
+              { hex: '#8A2BE2', name: 'Primary Purple' }, { hex: '#FF007F', name: 'Primary Pink' },
+              { hex: '#00FFFF', name: 'Accent Cyan' }, { hex: '#0A0F2C', name: 'Dark Blue' },
+              { hex: '#E5E7EB', name: 'Light Gray' }
+          ]
+      };
+
+      function renderPalette(brandId) {
+          const container = document.querySelector(`#${brandId} .grid[class*="gap-6"]`);
+          if (!container) return;
+          palettes[brandId].forEach(color => {
+              container.innerHTML += `
+                  <div class="color-swatch cursor-pointer group" onclick="copyToClipboard('${color.hex}', this)">
+                      <div class="h-32 rounded-lg relative" style="background-color: ${color.hex};">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                           <i data-lucide="copy" class="w-8 h-8 text-white"></i>
+                        </div>
+                      </div>
+                      <div class="p-3">
+                          <p class="font-bold text-white">${color.name}</p>
+                          <p class="text-gray-400 font-mono">${color.hex}</p>
+                      </div>
+                  </div>`;
+          });
+          lucide.createIcons();
+      }
+      renderPalette('jetweb-labs');
+
+      window.copyToClipboard = (text, element) => {
+          navigator.clipboard.writeText(text).then(() => {
+              const originalText = element.querySelector('.font-mono').innerText;
+              element.querySelector('.font-mono').innerText = 'Copied!';
+              setTimeout(() => { element.querySelector('.font-mono').innerText = originalText; }, 1500);
+          }).catch(err => console.error('Failed to copy: ', err));
+      }
+
+      // --- 2. GEMINI API INTEGRATION ---
+      const apiKey = ""; // Handled by the execution environment
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+      
+      const callGeminiAPI = async (prompt, button, outputElement) => {
+          button.disabled = true;
+          const originalButtonText = button.innerHTML;
+          button.innerHTML = `<svg class="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...`;
+          outputElement.textContent = 'AI is thinking...';
+          
+          const payload = { contents: [{ parts: [{ text: prompt }] }] };
+
+          try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`API error: ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+            
+            if (text) {
+                outputElement.textContent = text.trim();
+            } else {
+                outputElement.textContent = 'Sorry, I couldn\'t generate a response. Please try again.';
+            }
+
+          } catch (error) {
+              console.error("Gemini API call failed:", error);
+              outputElement.textContent = `An error occurred. Please check the console for details.`;
+          } finally {
+              button.disabled = false;
+              button.innerHTML = originalButtonText;
+              lucide.createIcons();
+          }
+      };
+
+      // Event Listener for Brand Voice Generator
+      const generateVoiceBtn = document.getElementById('generate-voice-btn');
+      const voiceInput = document.getElementById('voice-input');
+      const voiceOutput = document.getElementById('voice-output');
+      
+      generateVoiceBtn.addEventListener('click', () => {
+          const inputText = voiceInput.value;
+          if (!inputText.trim()) {
+              voiceOutput.textContent = 'Please enter some text to transform.';
+              return;
+          }
+          const prompt = `You are a brand strategist for Jetweb Labs. Your brand voice is innovative, futuristic, professional, and confident. Rewrite the following text to perfectly match this tone, ensuring the core message remains the same. Do not add any preamble like "Here is the rewritten text". Just provide the rewritten text directly.\n\nOriginal Text: "${inputText}"`;
+          callGeminiAPI(prompt, generateVoiceBtn, voiceOutput);
+      });
+
+      // Event Listener for Social Media Idea Generator
+      const generateSocialBtn = document.getElementById('generate-social-btn');
+      const socialOutput = document.getElementById('social-output');
+
+      generateSocialBtn.addEventListener('click', () => {
+          const prompt = `Generate 5 creative social media post ideas for a web development agency called "Jetweb Labs". The posts must be targeted towards tech startups and founders. For each idea, provide a catchy headline, a short paragraph of body text, and 3-4 relevant hashtags. The tone should be inspiring, knowledgeable, and slightly futuristic. Format each idea clearly with a numbered list.`;
+          callGeminiAPI(prompt, generateSocialBtn, socialOutput);
+      });
+
+    });
+  </script>
+
+</body>
+</html>
+
