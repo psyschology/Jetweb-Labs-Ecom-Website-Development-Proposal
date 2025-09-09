@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Singhania - Interactive Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Slate Gray, Light Gray, Muted Blue Accent) -->
+    <!-- Application Structure Plan: A single-page, two-column responsive layout is chosen to present the resume. The main column features a vertical timeline for experience and projects, promoting an intuitive, chronological exploration. The sidebar provides concise, at-a-glance information like skills, education, and achievements. This structure separates primary narrative (experience) from supporting facts (skills), enhancing readability for recruiters. A skills donut chart adds a dynamic visual summary. -->
+    <!-- Visualization & Content Choices: 1. Experience/Projects -> Goal: Show chronological progression -> Viz: Vertical Timeline -> Interaction: Visual scanning -> Justification: More engaging than a list, shows career path clearly -> Method: HTML/CSS with Tailwind. 2. Skills -> Goal: Organize & Summarize -> Viz: Donut Chart (Technical vs. Soft) & Styled Tags -> Interaction: Hover on chart segments -> Justification: Chart gives a quick overview, tags are scannable and modern -> Library: Chart.js. 3. Core Content (Summary, Education, etc.) -> Goal: Inform -> Viz: Styled Text Blocks -> Interaction: Reading -> Justification: Standard and effective for resume content -> Method: HTML/Tailwind. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none;
+            }
+            .print-break-inside-avoid {
+                break-inside: avoid;
+            }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto max-w-6xl p-4 sm:p-6 lg:p-8">
+        
+        <header class="text-center mb-10">
+            <h1 class="text-4xl sm:text-5xl font-bold text-slate-800">Harsh Singhania</h1>
+            <p class="mt-2 text-lg text-slate-600">MBA Finance Candidate</p>
+            <div class="mt-4 flex justify-center items-center space-x-4 text-sm text-slate-500">
+                <span>Bengaluru, Karnataka</span>
+                <span class="text-gray-300">|</span>
+                <span>+91 6291031822</span>
+                <span class="text-gray-300">|</span>
+                <a href="mailto:harsh.singhania134@nmims.in" class="hover:text-blue-600">harsh.singhania134@nmims.in</a>
+                <span class="text-gray-300">|</span>
+                <a href="https://www.linkedin.com/in/harsh-singhania-mba-finance" target="_blank" class="hover:text-blue-600">LinkedIn Profile</a>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-12">
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-700 border-b-2 border-blue-200 pb-2 mb-6">Professional Summary</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Detail-oriented and analytical MBA Finance candidate with hands-on experience in financial analysis, market research, and valuation. Proven ability to analyze complex financial data, conduct comprehensive sector analysis, and create insightful reports to support strategic decision-making. Seeking to leverage a strong academic foundation and internship experience to contribute to a dynamic finance role.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-700 border-b-2 border-blue-200 pb-2 mb-8">Experience & Projects</h2>
+                    <div class="relative border-l-2 border-blue-200 pl-8 space-y-12">
+                         <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2 top-1"></div>
+                        <article class="print-break-inside-avoid">
+                            <span class="absolute -left-[58px] top-0 text-sm font-medium text-slate-500 w-24 text-right">May 2025</span>
+                            <h3 class="text-lg font-semibold text-slate-800">Finance Intern</h3>
+                            <p class="text-md text-slate-600">Birla Estates</p>
+                            <ul class="mt-2 list-disc list-inside text-slate-600 space-y-1">
+                                <li>Conducted in-depth competitive and sector analysis of 5 key real estate competitors to identify market trends.</li>
+                                <li>Analyzed financial statements and investor decks to evaluate performance, generating insights on liquidity and profitability.</li>
+                                <li>Developed and delivered 3 comprehensive presentations summarizing key financial findings for senior management.</li>
+                            </ul>
+                        </article>
+
+                        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2 top-[13.5rem]"></div>
+                        <article class="print-break-inside-avoid">
+                             <span class="absolute -left-[58px] top-0 text-sm font-medium text-slate-500 w-24 text-right">Feb 2025</span>
+                            <h3 class="text-lg font-semibold text-slate-800">WeCare Intern</h3>
+                            <p class="text-md text-slate-600">Way for Life (NGO)</p>
+                            <ul class="mt-2 list-disc list-inside text-slate-600 space-y-1">
+                                <li>Led rural health camps and sanitation surveys, improving health awareness for over 100 individuals.</li>
+                                <li>Co-authored a conservation report on the impact of pollution on migratory birds.</li>
+                                <li>Executed a community cleanliness drive to reduce plastic waste and promote sustainability.</li>
+                            </ul>
+                        </article>
+
+                        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2 top-[24.5rem]"></div>
+                         <article class="print-break-inside-avoid">
+                            <span class="absolute -left-[58px] top-0 text-sm font-medium text-slate-500 w-24 text-right">Apr 2025</span>
+                            <h3 class="text-lg font-semibold text-slate-800">Equity Research & Valuation Project</h3>
+                            <p class="text-md text-slate-600">Academic Project</p>
+                            <ul class="mt-2 list-disc list-inside text-slate-600 space-y-1">
+                                <li>Performed company valuation using DCF, comparative analysis (EV/EBITDA, P/E), and common-size analysis.</li>
+                                <li>Conducted detailed ratio analysis and cash flow forecasting to support investment recommendations.</li>
+                            </ul>
+                        </article>
+
+                        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2 top-[33rem]"></div>
+                        <article class="print-break-inside-avoid">
+                            <span class="absolute -left-[58px] top-0 text-sm font-medium text-slate-500 w-24 text-right">May 2024</span>
+                            <h3 class="text-lg font-semibold text-slate-800">A Study on SIP in Portfolio Management</h3>
+                            <p class="text-md text-slate-600">Academic Project</p>
+                            <ul class="mt-2 list-disc list-inside text-slate-600 space-y-1">
+                                <li>Analyzed SIP trends among 78 investors, segmenting data by age, income, and risk appetite.</li>
+                                <li>Identified key patterns in investor behavior and AMC preferences to formulate targeted investment strategies.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="space-y-8">
+                <section class="bg-white p-6 rounded-lg shadow-sm print-break-inside-avoid">
+                    <h2 class="text-xl font-bold text-slate-700 border-b pb-2 mb-4">Education</h2>
+                     <div>
+                        <h3 class="font-semibold text-slate-800">Master of Business Administration, Finance</h3>
+                        <p class="text-sm text-slate-600">Narsee Monjee Institute of Management Studies (NMIMS), Bengaluru</p>
+                        <p class="text-xs text-slate-500">2024 – 2026 | CGPA: 7.35/10.0</p>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="font-semibold text-slate-800">Bachelor of Commerce (B.Com)</h3>
+                        <p class="text-sm text-slate-600">The Bhawanipur Education Society College</p>
+                        <p class="text-xs text-slate-500">2021 – 2024 | CGPA: 6.71/10.0</p>
+                    </div>
+                </section>
+                
+                <section class="bg-white p-6 rounded-lg shadow-sm print-break-inside-avoid">
+                    <h2 class="text-xl font-bold text-slate-700 border-b pb-2 mb-4">Skills Overview</h2>
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="font-semibold text-slate-800 mb-2">Technical Skills</h3>
+                        <div class="flex flex-wrap gap-2 text-sm">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Financial Analysis</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Financial Modeling</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">DCF Valuation</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Ratio Analysis</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Market Research</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Forecasting</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">MS Excel</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">MS PowerPoint</span>
+                        </div>
+                    </div>
+                     <div class="mt-4">
+                        <h3 class="font-semibold text-slate-800 mb-2">Soft Skills</h3>
+                        <div class="flex flex-wrap gap-2 text-sm">
+                            <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Analytical Thinking</span>
+                            <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Problem Solving</span>
+                            <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Communication</span>
+                            <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Leadership</span>
+                            <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Teamwork</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-white p-6 rounded-lg shadow-sm print-break-inside-avoid">
+                    <h2 class="text-xl font-bold text-slate-700 border-b pb-2 mb-4">Leadership & Achievements</h2>
+                    <ul class="space-y-2 text-sm text-slate-600 list-disc list-inside">
+                        <li><strong>Senior Member:</strong> Mudra, The Finance Club at NMIMS, Bengaluru.</li>
+                        <li><strong>Letter of Recommendation:</strong> Received from Head of BD Finance at Birla Estates for exceptional performance.</li>
+                        <li><strong>Competition Participant:</strong> TVS Credit E.P.I.C 6.0 & Tata Imagination Challenge.</li>
+                        <li><strong>Academic Achievement:</strong> Secured A+ Grade in "Diploma in Professional Accounting Systems".</li>
+                    </ul>
+                </section>
+
+                <section class="bg-white p-6 rounded-lg shadow-sm print-break-inside-avoid">
+                    <h2 class="text-xl font-bold text-slate-700 border-b pb-2 mb-4">Certifications</h2>
+                    <ul class="space-y-1 text-sm text-slate-600 list-disc list-inside">
+                        <li>Using ChatGPT and Generative AI in FinTech</li>
+                        <li>Wharton Business Foundations Capstone</li>
+                        <li>Introduction to Corporate Finance, Coursera</li>
+                        <li>Introduction to Financial Accounting, Coursera</li>
+                    </ul>
+                </section>
+            </aside>
+        </main>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        const skillsChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Technical Skills', 'Soft Skills'],
+                datasets: [{
+                    label: 'Skills Breakdown',
+                    data: [8, 5],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(107, 114, 128, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(107, 114, 128, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + ' skills listed';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
