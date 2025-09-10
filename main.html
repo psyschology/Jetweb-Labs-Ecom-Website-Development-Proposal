@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jetweb Labs - Engineering the Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playwrite+US+Modern:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0a0a18;
+            --accent-blue: #0084ff;
+            --accent-purple: #be229c;
+            --text-light: #f0f0f0;
+            --text-dark: #a0a0b0;
+            --card-bg: rgba(22, 22, 41, 0.5);
+            --border-glow-start: rgba(0, 132, 255, 0.6);
+            --border-glow-end: rgba(190, 34, 156, 0.6);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 20% 20%, rgba(0, 132, 255, 0.1), transparent 30%),
+                              radial-gradient(circle at 80% 70%, rgba(190, 34, 156, 0.1), transparent 30%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            margin-right: 15px;
+        }
+
+        .logo-text {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .logo-text span {
+            color: var(--accent-blue);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 span {
+            color: var(--accent-blue);
+        }
+        
+        .section-header .inspirational-text {
+            font-family: 'Playwrite US Modern', cursive;
+            font-size: 1.5em;
+            color: var(--text-dark);
+            font-weight: 300;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero .tagline {
+            font-family: 'Playwrite US Modern', cursive;
+            font-size: 1.8em;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #fff;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 132, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 132, 255, 0.5);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--border-glow-start), var(--border-glow-end), transparent 30%);
+            animation: rotate 6s linear infinite;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card .card-content {
+            position: relative;
+            background: var(--primary-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin: -1px; /* To cover the border area */
+            height: calc(100% + 2px);
+            z-index: 1;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .card h3 {
+            font-size: 1.8em;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+        
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-dark);
+        }
+        
+        .card ul li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 3em;
+            margin: 0;
+            color: var(--accent-blue);
+        }
+
+        .stat-item p {
+            font-size: 1.1em;
+            color: var(--text-dark);
+        }
+        
+        .contact-section {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3em; }
+            .section-header h2 { font-size: 2.5em; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <svg class="jetweb.png" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style="stop-color:var(--accent-blue);stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:var(--accent-purple);stop-opacity:1" />
+                        </linearGradient>
+                      </defs>
+                      <path d="M 20,20 L 20,80 L 60,80" fill="none" stroke="url(#logoGradient)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M 50,50 L 80,50 L 80,80" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="logo-text">Jetweb<span>Labs</span></div>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Engineering the <span>Future</span> of Digital Interaction</h1>
+                <p class="tagline">An inspiration from Stark Labs...</p>
+                <p>Jetweb Labs is a planned technology conglomerate, building a portfolio of innovative brands that redefine how we connect, play, and grow. Our journey is fueled by a proven engine and a vision for what's next.</p>
+                <a href="#contact" class="cta-button">Partner With Us</a>
+            </div>
+        </section>
+
+        <section id="engine">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Engine: <span>Jetweb.in</span></h2>
+                    <p class="inspirational-text">The foundation fueling our future.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h4>45+</h4>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>1 Year</h4>
+                        <p>Proven Operations</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>19+</h4>
+                        <p>Strong Team Members</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>100%</h4>
+                        <p>Breakeven Performance</p>
+                    </div>
+                </div>
+                <p style="text-align: center; max-width: 800px; margin: 40px auto 0 auto; color: var(--text-dark);">For over a year, Jetweb.in has been our powerhouse for IT solutions. From bespoke software and web apps to cloud infrastructure and digital marketing, it's our profit-generating core. With a world-class team of 4 full-time employees and 15+ specialized contractors, we've established a reputation for excellence and delivery.</p>
+            </div>
+        </section>
+        
+        <section id="funding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The Fuel for <span>Growth</span></h2>
+                    <p class="inspirational-text">Why we need partners to accelerate our vision.</p>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Scale Our Core</h3>
+                            <ul>
+                                <li>Hire elite Business Development Executives (BDEs).</li>
+                                <li>Streamline operations with Jira & Confluence.</li>
+                                <li>Aggressively expand marketing and ad budget.</li>
+                                <li>Achieve 100% month-on-month sales growth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Build the Future</h3>
+                            <ul>
+                                <li>Fund the R&D for our proprietary AI model.</li>
+                                <li>Develop the platform infrastructure for ModX.</li>
+                                <li>Launch ZoneX and forge key eSports partnerships.</li>
+                                <li>Expand our core software development team.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Strategic Leadership</h3>
+                            <ul>
+                                <li>Onboard a Revenue Growth Officer.</li>
+                                <li>Build a dedicated marketing & sales vertical.</li>
+                                <li>Explore strategic brand acquisitions in the future.</li>
+                                <li>Establish Jetweb Labs as a technology leader.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="frontiers">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Next <span>Frontiers</span></h2>
+                    <p class="inspirational-text">Four markets, one unified vision.</p>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>AI Communication</h3>
+                            <p>We are building a next-gen AI, targeting GPT-5 capabilities, with a revolutionary feature: <strong>in-chat threading</strong>. Like Slack, users can reply to any AI message to create a sub-conversation, eliminating lost context and creating truly organized, multi-threaded dialogues.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>ModX: Game Modding</h3>
+                            <p>A sub-brand like Blinkit, ModX will be the ultimate destination for game modification. We're building a platform to empower creators and provide gamers with a universe of new experiences, tapping into the massive global gaming community.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>ZoneX: eSports</h3>
+                            <p>A dedicated district for competitive gaming. ZoneX will host premier eSports tournaments, collaborating directly with game companies to create officially sanctioned events and cultivate the next generation of eSports talent in a thriving ecosystem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Growth & <span>Marketing</span> Strategy</h2>
+                    <p class="inspirational-text">A multi-pronged approach to market domination.</p>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Creator Collaborations</h3>
+                            <p>Partnering with influential content creators and tech evangelists to showcase our products and build authentic community trust.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Affix Affiliate Program</h3>
+                            <p>Launching a robust affiliate program to empower our fans and partners to grow with us, creating a powerful, incentivized sales network.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Community Hackathons</h3>
+                            <p>Engaging the developer and gaming communities directly through sponsored hackathons to drive innovation and user adoption for our platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Join Us in <span>Building the Future</span></h2>
+                    <p class="inspirational-text">We have the vision and the team. Let's build a legacy together.</p>
+                </div>
+                <a href="mailto:contact@jetweblabs.in" class="cta-button">Become Our Partner</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jetweb Labs Pvt. Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
