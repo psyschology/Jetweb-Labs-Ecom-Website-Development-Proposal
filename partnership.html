@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jetweb Labs - Engineering the Future</title>
+    <!-- Chosen Palette: Galactic Tech -->
+    <!-- Application Structure Plan: A top-down narrative structure designed for investors. It begins with a high-level vision (Hero), establishes credibility with current success (The Engine: jetweb.in), presents the future opportunities (Next Frontiers), details the investment needs (The Ask & Growth Plan), visualizes the potential ROI with an interactive chart, and concludes with a clear call to action. This linear storytelling approach is more effective for a pitch than a complex dashboard, guiding the user logically from 'what is' to 'what could be'. -->
+    <!-- Visualization & Content Choices: 
+        - Jetweb.in Stats: (Goal: Inform/Credibility) -> Dynamic stat cards (HTML/CSS) are used instead of a chart for high-impact, easily digestible numbers (45+ projects). Interaction: Subtle hover effects. Justification: More engaging for key metrics than a simple list.
+        - Use of Funds/Next Frontiers: (Goal: Organize) -> A 3-column responsive grid of cards (HTML/Tailwind) organizes distinct concepts clearly. Interaction: Hover animations. Justification: Allows investors to quickly scan the core pillars of the strategy.
+        - Growth Projection: (Goal: Change/Compare) -> An interactive line chart (Chart.js/Canvas) visualizes the 100% MoM growth target. Interaction: Users can click buttons (6M, 12M, 24M) to dynamically update the chart's timeframe. Justification: Makes the abstract growth target tangible and allows investors to explore the potential scale over different periods.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playwrite+US+Modern:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0a0a18;
+            --accent-blue: #0084ff;
+            --accent-purple: #be229c;
+            --text-light: #f0f0f0;
+            --text-dark: #a0a0b0;
+            --card-bg: rgba(22, 22, 41, 0.5);
+            --border-glow-start: rgba(0, 132, 255, 0.6);
+            --border-glow-end: rgba(190, 34, 156, 0.6);
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+            background-image: radial-gradient(circle at 20% 20%, rgba(0, 132, 255, 0.08), transparent 30%),
+                              radial-gradient(circle at 80% 70%, rgba(190, 34, 156, 0.08), transparent 30%);
+        }
+        .font-playwrite {
+            font-family: 'Playwrite US Modern', cursive;
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-card {
+            background-color: var(--card-bg);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+            backdrop-filter: blur(10px);
+        }
+        .glow-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--border-glow-start), var(--border-glow-end), transparent 30%);
+            animation: rotate 6s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .glow-card:hover::before {
+            opacity: 1;
+        }
+        .glow-card-content {
+            position: relative;
+            background: var(--primary-bg);
+            margin: 1px;
+            z-index: 1;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .tab-button.active {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-80 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="#hero" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 flex items-center justify-center">
+                        <canvas id="logoCanvas" width="40" height="40"></canvas>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Jetweb<span class="text-gradient">Labs</span></span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                    <a href="#engine" class="hover:text-white transition-colors">The Engine</a>
+                    <a href="#frontiers" class="hover:text-white transition-colors">The Vision</a>
+                    <a href="#growth" class="hover:text-white transition-colors">Growth Plan</a>
+                    <a href="#ai-analysis" class="hover:text-white transition-colors">✨ AI Analysis</a>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-full transition-colors">Partner With Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative pt-32 pb-20 md:pt-48 md:pb-32 text-center overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">Engineering the <span class="text-gradient">Future</span> of Digital Interaction</h1>
+                <p class="mt-6 font-playwrite text-xl md:text-2xl text-gray-300">Inspired by STAR Labs, built for reality.</p>
+                <p class="mt-8 max-w-3xl mx-auto text-lg text-gray-400">Jetweb Labs is a technology conglomerate building a portfolio of innovative brands that redefine how we connect, play, and grow. Our journey is fueled by a proven engine and a vision for what's next.</p>
+                <a href="#contact" class="mt-10 inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-500 transition-transform hover:scale-105 transform">Explore Our Vision</a>
+            </div>
+        </section>
+
+        <!-- The Engine: Jetweb.in Section -->
+        <section id="engine" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white">Our Engine: <span class="text-gradient">jetweb.in</span></h2>
+                    <p class="mt-4 font-playwrite text-lg md:text-xl text-gray-400">The foundation fueling our future ambitions.</p>
+                    <p class="mt-6 max-w-3xl mx-auto text-gray-400">This introductory section establishes our credibility. Before we show you the future, we want to show you the proven, profitable foundation it's built upon. For over a year, jetweb.in has been our powerhouse, delivering world-class IT solutions and demonstrating our team's capability to execute and succeed.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                        <div class="text-5xl font-bold text-gradient">45+</div>
+                        <p class="mt-2 text-gray-300">Projects Delivered</p>
+                    </div>
+                    <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                        <div class="text-5xl font-bold text-gradient">1</div>
+                        <p class="mt-2 text-gray-300">Year of Proven Operations</p>
+                    </div>
+                    <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                        <div class="text-5xl font-bold text-gradient">19+</div>
+                        <p class="mt-2 text-gray-300">Strong Team Members</p>
+                    </div>
+                    <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                        <div class="text-5xl font-bold text-gradient">100%</div>
+                        <p class="mt-2 text-gray-300">Breakeven Performance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Frontiers Section -->
+        <section id="frontiers" class="py-20 bg-white/5">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white">Our Next <span class="text-gradient">Frontiers</span></h2>
+                    <p class="mt-4 font-playwrite text-lg md:text-xl text-gray-400">Four markets, one unified vision.</p>
+                     <p class="mt-6 max-w-3xl mx-auto text-gray-400">This is where we're going. With the foundation of jetweb.in secure, we are launching three new sub-brands, each targeting a massive, high-growth market. These ventures are not disparate ideas but synergistic components of a larger ecosystem we are building.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glow-card rounded-2xl transition-transform hover:-translate-y-2">
+                        <div class="glow-card-content p-8 rounded-xl h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-gradient">AI Communication</h3>
+                            <p class="mt-4 text-gray-400 flex-grow">A next-gen AI with a revolutionary feature: <strong>in-chat threading</strong>. Like Slack, users can create sub-conversations from any AI message, eliminating lost context and creating truly organized dialogues.</p>
+                        </div>
+                    </div>
+                    <div class="glow-card rounded-2xl transition-transform hover:-translate-y-2">
+                         <div class="glow-card-content p-8 rounded-xl h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-gradient">ModX: Game Modding</h3>
+                            <p class="mt-4 text-gray-400 flex-grow">The ultimate destination for game modification. ModX will be a platform empowering creators and providing gamers with a universe of new experiences, tapping into the massive global gaming community.</p>
+                        </div>
+                    </div>
+                    <div class="glow-card rounded-2xl transition-transform hover:-translate-y-2">
+                         <div class="glow-card-content p-8 rounded-xl h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-gradient">ZoneX: eSports</h3>
+                            <p class="mt-4 text-gray-400 flex-grow">A dedicated district for competitive gaming. ZoneX will host premier eSports tournaments, collaborating with game companies to create officially sanctioned events and cultivate the next generation of talent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Growth Plan -->
+        <section id="growth" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white">The Plan for <span class="text-gradient">Hypergrowth</span></h2>
+                    <p class="mt-4 font-playwrite text-lg md:text-xl text-gray-400">Strategic investment to fuel our 100% MoM growth target.</p>
+                    <p class="mt-6 max-w-4xl mx-auto text-gray-400">This section details our investment strategy and the tangible results we aim to achieve. Below, you can interact with our growth projection chart to visualize the potential based on our target. The investment will be strategically allocated to scale our current operations, build our future products, and acquire key leadership talent.</p>
+                </div>
+                
+                <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                    <div class="flex justify-center mb-6 space-x-2">
+                        <button class="tab-button px-4 py-2 rounded-full text-sm font-medium transition-colors bg-white/10 text-gray-300 active" data-months="12">12 Months</button>
+                        <button class="tab-button px-4 py-2 rounded-full text-sm font-medium transition-colors bg-white/10 text-gray-300" data-months="18">18 Months</button>
+                        <button class="tab-button px-4 py-2 rounded-full text-sm font-medium transition-colors bg-white/10 text-gray-300" data-months="24">24 Months</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="mt-16 grid md:grid-cols-3 gap-8">
+                     <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                        <h3 class="text-xl font-bold text-gradient">Scale Our Core</h3>
+                        <ul class="mt-4 space-y-2 text-gray-400 list-disc list-inside">
+                            <li>Hire elite Business Development Executives</li>
+                            <li>Streamline operations with Jira & Confluence</li>
+                            <li>Aggressively expand marketing budget</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                        <h3 class="text-xl font-bold text-gradient">Build The Future</h3>
+                         <ul class="mt-4 space-y-2 text-gray-400 list-disc list-inside">
+                            <li>Fund R&D for proprietary Threaded AI</li>
+                            <li>Develop platform infrastructure for ModX</li>
+                            <li>Launch ZoneX and forge eSports partnerships</li>
+                        </ul>
+                    </div>
+                     <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                        <h3 class="text-xl font-bold text-gradient">Strategic Leadership</h3>
+                         <ul class="mt-4 space-y-2 text-gray-400 list-disc list-inside">
+                            <li>Onboard a Revenue Growth Officer (RGO)</li>
+                            <li>Build a dedicated sales & marketing vertical</li>
+                            <li>Explore strategic brand acquisitions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI-Powered Strategic Analysis Section -->
+        <section id="ai-analysis" class="py-20 bg-white/5">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white">✨ AI-Powered <span class="text-gradient">Strategic Analysis</span></h2>
+                    <p class="mt-4 font-playwrite text-lg md:text-xl text-gray-400">Get an instant, AI-generated analysis of our strategic initiatives.</p>
+                    <p class="mt-6 max-w-3xl mx-auto text-gray-400">Select an area of our business plan to receive a detailed analysis, powered by Google's Gemini API. This tool demonstrates our commitment to leveraging cutting-edge AI for strategic insights.</p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white/5 p-8 rounded-2xl border border-white/10">
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <select id="analysisTopic" class="w-full sm:w-auto flex-grow bg-white/10 border border-white/20 rounded-full px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23a0a0b0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem center; background-size: .65em auto; padding-right: 2.5rem;">
+                            <option value="modx">Market Opportunity for ModX</option>
+                            <option value="zonex">Competitive Landscape for ZoneX</option>
+                            <option value="ai">Go-to-Market for Threaded AI</option>
+                        </select>
+                        <button id="generateAnalysisBtn" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-full font-semibold transition-colors flex items-center justify-center space-x-2 disabled:opacity-50">
+                            <span>Generate Analysis</span>
+                        </button>
+                    </div>
+                    <div id="analysisResult" class="mt-6 p-6 bg-black/20 rounded-lg min-h-[150px] text-gray-300 whitespace-pre-wrap transition-all">
+                        Select a topic and click "Generate Analysis" to see the AI's perspective...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-white">Join Us in <span class="text-gradient">Building the Future</span></h2>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">We have the vision, the team, and the proven execution capability. We're looking for partners to help us build a technology legacy. Let's start the conversation.</p>
+                <a href="mailto:contact@jetweblabs.in" class="mt-10 inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-500 transition-transform hover:scale-105 transform">Become Our Partner</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/10 mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2025 Jetweb Labs Pvt. Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rootStyles = getComputedStyle(document.documentElement);
+            const accentBlue = rootStyles.getPropertyValue('--accent-blue').trim();
+            const accentPurple = rootStyles.getPropertyValue('--accent-purple').trim();
+
+            // Logo Animation on Canvas
+            const logoCanvas = document.getElementById('logoCanvas');
+            if (logoCanvas) {
+                const ctx = logoCanvas.getContext('2d');
+                const w = logoCanvas.width;
+                const h = logoCanvas.height;
+
+                const grad = ctx.createLinearGradient(0, 0, w, h);
+                grad.addColorStop(0, accentBlue);
+                grad.addColorStop(1, accentPurple);
+                
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 4;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.beginPath();
+                ctx.moveTo(w * 0.2, h * 0.2);
+                ctx.lineTo(w * 0.2, h * 0.8);
+                ctx.lineTo(w * 0.6, h * 0.8);
+                ctx.stroke();
+
+                ctx.strokeStyle = '#FFFFFF';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(w * 0.5, h * 0.5);
+                ctx.lineTo(w * 0.8, h * 0.5);
+                ctx.lineTo(w * 0.8, h * 0.8);
+                ctx.stroke();
+            }
+
+            // Interactive Chart
+            const chartCanvas = document.getElementById('growthChart');
+            if(chartCanvas) {
+                const ctx = chartCanvas.getContext('2d');
+                let growthChart;
+                const tabButtons = document.querySelectorAll('.tab-button');
+
+                const createOrUpdateChart = (months) => {
+                    const initialValue = 1;
+                    const growthRate = 1; // 100%
+
+                    const labels = Array.from({ length: months + 1 }, (_, i) => `M${i}`);
+                    const data = [initialValue];
+
+                    for (let i = 1; i <= months; i++) {
+                        data.push(data[i-1] * (1 + growthRate));
+                    }
+                    
+                    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                    gradient.addColorStop(0, 'rgba(0, 132, 255, 0.5)');
+                    gradient.addColorStop(1, 'rgba(190, 34, 156, 0.1)');
+
+                    if (growthChart) {
+                        growthChart.destroy();
+                    }
+
+                    growthChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Projected Revenue Growth (Normalized)',
+                                data: data,
+                                backgroundColor: gradient,
+                                borderColor: accentBlue,
+                                borderWidth: 2,
+                                fill: true,
+                                tension: 0.4,
+                                pointBackgroundColor: '#fff',
+                                pointBorderColor: accentBlue
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    type: 'logarithmic',
+                                    ticks: {
+                                        color: 'rgba(255,255,255,0.7)',
+                                        callback: function(value, index, values) {
+                                            if (value === 1 || value === 10 || value === 100 || value === 1000 || value === 10000 || value === 100000 || value === 1000000 || value === 10000000) {
+                                                return value.toLocaleString();
+                                            }
+                                        }
+                                    },
+                                    grid: {
+                                        color: 'rgba(255,255,255,0.1)'
+                                    }
+                                },
+                                x: {
+                                    ticks: {
+                                        color: 'rgba(255,255,255,0.7)'
+                                    },
+                                     grid: {
+                                        color: 'rgba(255,255,255,0.1)'
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false
+                                },
+                                tooltip: {
+                                    backgroundColor: 'rgba(0,0,0,0.8)',
+                                    titleFont: { size: 14 },
+                                    bodyFont: { size: 12 },
+                                    callbacks: {
+                                        label: function(context) {
+                                            let label = context.dataset.label || '';
+                                            if (label) {
+                                                label += ': ';
+                                            }
+                                            if (context.parsed.y !== null) {
+                                                label += context.parsed.y.toLocaleString() + 'x Initial';
+                                            }
+                                            return label;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        const months = parseInt(button.dataset.months);
+                        createOrUpdateChart(months);
+                    });
+                });
+
+                // Initial chart render
+                createOrUpdateChart(12);
+            }
+
+            // Gemini API Integration
+            const generateAnalysisBtn = document.getElementById('generateAnalysisBtn');
+            const analysisTopicSelect = document.getElementById('analysisTopic');
+            const analysisResultDiv = document.getElementById('analysisResult');
+
+            if (generateAnalysisBtn) {
+                generateAnalysisBtn.addEventListener('click', async () => {
+                    const topicText = analysisTopicSelect.options[analysisTopicSelect.selectedIndex].text;
+                    
+                    analysisResultDiv.innerHTML = `<div class="flex items-center justify-center h-full"><svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Generating analysis...</span></div>`;
+                    generateAnalysisBtn.disabled = true;
+                    
+                    const systemPrompt = "You are a top-tier venture capital analyst. Your task is to provide a concise, insightful, and professional analysis of a business initiative based on the provided summary. Focus on market potential, risks, and strategic advantages. Structure your response in a few clear paragraphs. Do not use markdown formatting.";
+                    
+                    const userQuery = `Based on the Jetweb Labs business plan, provide an analysis for the following topic: "${topicText}". 
+                    
+                    Here is the relevant context from the business plan:
+                    - Overall Vision: A technology conglomerate inspired by STAR Labs, building a portfolio of innovative brands. The core business, jetweb.in, is a profitable IT services company that funds R&D.
+                    - ModX (Game Modding): A platform to empower creators and provide gamers with new experiences, tapping into the global gaming community.
+                    - ZoneX (eSports): A dedicated platform for hosting premier eSports tournaments in collaboration with game companies.
+                    - AI Communication (Threaded AI): A next-gen AI with in-chat threading, allowing users to create sub-conversations from any AI message to maintain context.
+                    
+                    Please provide your analysis.`;
+
+                    try {
+                        const apiKey = ""; 
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                        const payload = {
+                            contents: [{ parts: [{ text: userQuery }] }],
+                            systemInstruction: {
+                                parts: [{ text: systemPrompt }]
+                            },
+                        };
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`API call failed with status: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+                        const candidate = result.candidates?.[0];
+
+                        if (candidate && candidate.content?.parts?.[0]?.text) {
+                            const text = candidate.content.parts[0].text;
+                            analysisResultDiv.textContent = text;
+                        } else {
+                            analysisResultDiv.textContent = 'Sorry, the analysis could not be generated at this time. The response from the AI was empty.';
+                            console.error('Unexpected API response structure:', result);
+                        }
+
+                    } catch (error) {
+                        console.error('Error calling Gemini API:', error);
+                        analysisResultDiv.textContent = 'An error occurred while generating the analysis. Please check the console for details and try again later.';
+                    } finally {
+                        generateAnalysisBtn.disabled = false;
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
