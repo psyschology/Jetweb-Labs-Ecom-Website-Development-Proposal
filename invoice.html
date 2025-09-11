@@ -5,55 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invoice Generator - Jetweb Labs</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .form-input { background-color:#1f2937; border:1px solid #4b5563; color:#d1d5db; }
-    .form-input:focus { outline:none; border-color:#f97316; box-shadow:0 0 0 2px rgba(249,115,22,0.4); }
-    .btn-primary { background-image: linear-gradient(to right,#f97316,#ea580c); }
-    .btn-secondary { background-color:#374151; }
+    body { 
+      font-family: 'Inter', sans-serif;
+      background-color: #0c0a1a;
+      background-image: radial-gradient(circle at top right, rgba(129, 58, 223, 0.2), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(249, 115, 22, 0.15), transparent 50%);
+    }
+    .preview-font { font-family: 'Playwrite US Modern', cursive; }
+    .form-input { 
+      background-color: rgba(30, 27, 50, 0.8); 
+      border: 1px solid #4a3f70; 
+      color: #e0e0e0;
+      transition: all 0.2s ease-in-out;
+    }
+    .form-input:focus { 
+      outline: none; 
+      border-color: #c084fc; 
+      box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.4); 
+    }
+    .btn-primary { 
+      background-image: linear-gradient(to right, #a855f7, #f97316);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
+      transform: translateY(-2px);
+    }
+    .btn-secondary { 
+      background-color: #4a3f70;
+      transition: background-color 0.2s ease;
+    }
+     .btn-secondary:hover { 
+      background-color: #5f5291;
+    }
+    .card {
+      background-color: rgba(17, 14, 33, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid #4a3f70;
+    }
     @media print {
-      body { margin:0; padding:0; background:#fff; }
-      .no-print { display:none !important; }
-      .print-area { display:block !important; position:absolute; top:0; left:0; width:100%; height:100%; padding:2rem; }
-      .invoice-preview { box-shadow:none !important; border:none !important; border-radius:0 !important; padding:0 !important; background:#fff !important; color:#000 !important; }
-      .invoice-preview h1, .invoice-preview h2, .invoice-preview p { color:#000 !important; }
+      body { margin: 0; padding: 0; background: #fff; }
+      .no-print { display: none !important; }
+      .print-area { display: block !important; position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 1rem; }
+      #invoice-preview { 
+        box-shadow: none !important; 
+        border: none !important; 
+        border-radius: 0 !important; 
+        padding: 0 !important; 
+        background: #fff !important; 
+        color: #000 !important; 
+      }
+      #invoice-preview h1, #invoice-preview h2, #invoice-preview p, #invoice-preview th, #invoice-preview td { color: #000 !important; }
+      #invoice-preview .text-gray-500 { color: #555 !important; }
     }
   </style>
 </head>
-<body class="bg-gray-900 text-gray-200">
+<body class="text-gray-200">
 
 <main class="flex flex-col lg:flex-row min-h-screen">
   
-  <!-- FORM -->
   <div class="w-full lg:w-1/2 p-6 sm:p-8 space-y-6 overflow-y-auto no-print">
-    <header class="flex items-center space-x-3 mb-6">
-      <img src="jetweb.png" alt="Jetweb.in Logo" class="h-12 w-auto">
+    <header class="flex items-center space-x-4 mb-6">
+      <img src="jetweb.png" alt="Jetweb Labs Logo" class="h-16 w-auto rounded-full">
       <div>
-        <h1 class="text-2xl font-bold text-white">Invoice Generator</h1>
-        <p class="text-sm text-gray-400">Create & send invoices with Jetweb Labs template.</p>
+        <h1 class="text-3xl font-bold text-white preview-font">Invoice Creator</h1>
+        <p class="text-sm text-purple-300">Craft beautiful invoices with the Jetweb Labs touch.</p>
       </div>
     </header>
 
-    <!-- Client Details -->
-    <div class="bg-gray-800 p-5 rounded-xl">
-      <h2 class="font-semibold text-lg mb-4">Bill To</h2>
+    <div class="card p-5 rounded-xl">
+      <h2 class="font-semibold text-lg mb-4 text-purple-300">Bill To</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <input id="clientName" type="text" placeholder="Client Name" class="form-input p-2 rounded-md">
         <input id="clientCompany" type="text" placeholder="Client Company" class="form-input p-2 rounded-md">
         <textarea id="clientAddress" placeholder="Client Address" rows="3" class="form-input p-2 rounded-md md:col-span-2"></textarea>
         <input id="clientEmail" type="email" placeholder="Client Email" class="form-input p-2 rounded-md md:col-span-2">
-        <input id="clientTax" type="text" placeholder="Client GST / VAT Number" class="form-input p-2 rounded-md md:col-span-2">
+        <input id="clientTax" type="text" placeholder="Client GST / VAT Number (Optional)" class="form-input p-2 rounded-md md:col-span-2">
       </div>
     </div>
+    
+    <div class="card p-5 rounded-xl">
+      <h2 class="font-semibold text-lg mb-4 text-purple-300">Project Description (Optional)</h2>
+      <textarea id="projectDescription" class="form-input p-2 rounded-md w-full" rows="3" placeholder="Briefly describe the project or engagement..."></textarea>
+    </div>
 
-    <!-- Invoice Details -->
-    <div class="bg-gray-800 p-5 rounded-xl">
-      <h2 class="font-semibold text-lg mb-4">Invoice Details</h2>
+    <div class="card p-5 rounded-xl">
+      <h2 class="font-semibold text-lg mb-4 text-purple-300">Invoice Details</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="flex">
           <input id="invoiceNumber" type="text" placeholder="Invoice Number" class="form-input rounded-l-md p-2 w-full">
-          <button onclick="generateInvoiceNumber()" class="bg-gray-700 hover:bg-gray-600 text-xs px-2 rounded-r-md">GEN</button>
+          <button onclick="generateInvoiceNumber()" class="bg-purple-800 hover:bg-purple-700 text-xs px-3 rounded-r-md transition-colors">GEN</button>
         </div>
         <select id="currency" class="form-input p-2 rounded-md">
           <option value="₹">INR (₹)</option>
@@ -65,54 +110,60 @@
         <input id="dueDate" type="date" class="form-input p-2 rounded-md">
       </div>
     </div>
-
-    <!-- Services -->
-    <div class="bg-gray-800 p-5 rounded-xl">
-      <h2 class="font-semibold text-lg mb-4">Services</h2>
-      <div id="item-list" class="space-y-3"></div>
-      <button onclick="addItem()" class="mt-4 btn-secondary py-2 px-4 rounded-md text-sm w-full hover:bg-gray-600">+ Add Another Service</button>
+    
+    <div class="card p-5 rounded-xl">
+      <h2 class="font-semibold text-lg mb-4 text-purple-300">Project Milestones (Optional)</h2>
+      <div id="milestone-list" class="space-y-3"></div>
+      <button onclick="addMilestone()" class="mt-4 btn-secondary py-2 px-4 rounded-md text-sm w-full">+ Add Milestone</button>
     </div>
 
-    <!-- Discounts & Notes -->
-    <div class="bg-gray-800 p-5 rounded-xl">
-      <h2 class="font-semibold text-lg mb-4">Discounts, Tax & Notes</h2>
+    <div class="card p-5 rounded-xl">
+      <h2 class="font-semibold text-lg mb-4 text-purple-300">Services / Items</h2>
+      <div id="item-list" class="space-y-3"></div>
+      <button onclick="addItem()" class="mt-4 btn-secondary py-2 px-4 rounded-md text-sm w-full">+ Add Service</button>
+    </div>
+
+    <div class="card p-5 rounded-xl">
+      <h2 class="font-semibold text-lg mb-4 text-purple-300">Discount & Tax</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex md:col-span-2">
-          <input id="discountCode" type="text" placeholder="Coupon Code (e.g. NEW10)" class="form-input p-2 rounded-l-md w-full">
-          <button onclick="applyDiscount()" class="bg-orange-600 hover:bg-orange-500 px-4 rounded-r-md">Apply</button>
-        </div>
+        <select id="discountType" class="form-input p-2 rounded-md md:col-span-2">
+            <option value="0">No Discount</option>
+            <option value="10">NEW10 - New Client (10%)</option>
+            <option value="15">REFERRUSH - Referral (15%)</option>
+            <option value="500_flat">FLAT500 (₹500 Off)</option>
+        </select>
         <div class="flex md:col-span-2">
           <span class="inline-flex items-center px-3 text-sm text-gray-300 bg-gray-700 border border-r-0 border-gray-600 rounded-l-md">Tax</span>
           <input id="taxRate" type="number" value="18" class="form-input p-2 rounded-none w-full" placeholder="Tax Rate">
           <span class="inline-flex items-center px-3 text-sm text-gray-300 bg-gray-700 border border-l-0 border-gray-600 rounded-r-md">%</span>
         </div>
-        <textarea id="notes" class="form-input p-2 rounded-md md:col-span-2" rows="4" placeholder="Add notes, payment terms, or bank details..."></textarea>
       </div>
     </div>
 
-    <!-- Generate -->
-    <div class="pt-4 sticky bottom-0 bg-gray-900 pb-4">
-      <button onclick="window.print()" class="btn-primary text-white font-bold py-3 px-6 rounded-lg text-lg w-full shadow-lg hover:shadow-xl transform hover:-translate-y-1">Generate & Print Invoice</button>
+    <div class="card p-5 rounded-xl">
+      <h2 class="font-semibold text-lg mb-4 text-purple-300">Notes & Payment Details</h2>
+      <textarea id="notes" class="form-input p-2 rounded-md w-full" rows="4" placeholder="Add notes, payment terms, or bank details..."></textarea>
+    </div>
+
+    <div class="pt-4 sticky bottom-0 bg-opacity-80 backdrop-filter backdrop-blur-sm pb-4">
+      <button onclick="generateAndPrint()" class="btn-primary text-white font-bold py-3 px-6 rounded-lg text-lg w-full shadow-lg">Generate & Print Invoice</button>
     </div>
   </div>
 
-  <!-- PREVIEW -->
-  <div class="print-area w-full lg:w-1/2 bg-gray-900 flex items-center justify-center p-4">
-    <div id="invoice-preview" class="invoice-preview bg-white text-gray-800 rounded-2xl shadow-2xl w-full max-w-2xl p-10">
+  <div class="print-area w-full lg:w-1/2 bg-gray-900 flex items-center justify-center p-4 lg:fixed lg:right-0 lg:top-0 lg:h-screen">
+    <div id="invoice-preview" class="bg-white text-gray-800 rounded-2xl shadow-2xl w-full max-w-2xl p-10 h-full overflow-y-auto">
       
-      <!-- Header -->
       <div class="flex justify-between items-start pb-6 border-b">
         <div>
-          <img src="jetweb.png" alt="Jetweb.in Logo" class="h-16">
-          <p class="text-sm text-gray-500 mt-2">Jetweb.in | Uttarpara, WB 712258<br>contact@jetweb.in | +91 82406 20015<br>GSTIN: 19ABCDE1234F1Z5</p>
+          <img src="jetweb.png" alt="Jetweb Labs Logo" class="h-16">
+          <p class="text-sm text-gray-500 mt-2">Jetweb Labs Pvt. Ltd. | Kolkata, WB 712246<br>sales@jetweblabs.in | +91 82406 20015<br>GSTIN: 19ABCDE1234F1Z5</p>
         </div>
         <div class="text-right">
-          <h1 class="text-4xl font-extrabold uppercase">Invoice</h1>
+          <h1 class="text-4xl font-extrabold uppercase preview-font">Invoice</h1>
           <p id="preview-invoiceNumber" class="text-gray-500 mt-2"></p>
         </div>
       </div>
 
-      <!-- Client & Dates -->
       <div class="flex justify-between mt-6">
         <div>
           <p class="font-bold text-gray-600">BILL TO</p>
@@ -129,8 +180,17 @@
           <p id="preview-dueDate"></p>
         </div>
       </div>
+      
+      <div id="preview-description-container" class="mt-8" style="display: none;">
+          <p class="font-bold text-gray-600">PROJECT</p>
+          <p id="preview-projectDescription" class="text-sm text-gray-600 mt-1 whitespace-pre-line"></p>
+      </div>
 
-      <!-- Items -->
+      <div id="preview-milestones-container" class="mt-8" style="display: none;">
+          <p class="font-bold text-gray-600">MILESTONES</p>
+          <ul id="preview-milestoneList" class="list-disc list-inside text-sm text-gray-600 mt-1"></ul>
+      </div>
+
       <div class="mt-8">
         <table class="w-full text-left">
           <thead>
@@ -144,102 +204,188 @@
           <tbody id="preview-itemList"></tbody>
           <tfoot>
             <tr><td colspan="2"></td><td class="p-3 text-right font-semibold">Subtotal</td><td id="preview-subtotal" class="p-3 text-right"></td></tr>
-            <tr><td colspan="2"></td><td id="preview-discountLabel" class="p-3 text-right font-semibold"></td><td id="preview-discount" class="p-3 text-right text-green-600"></td></tr>
+            <tr id="discount-row" style="display:none;"><td colspan="2"></td><td id="preview-discountLabel" class="p-3 text-right font-semibold"></td><td id="preview-discount" class="p-3 text-right text-green-600"></td></tr>
             <tr><td colspan="2"></td><td id="preview-taxLabel" class="p-3 text-right font-semibold"></td><td id="preview-tax" class="p-3 text-right"></td></tr>
-            <tr class="bg-gray-100"><td colspan="2"></td><td class="p-3 text-right text-lg font-bold">Total</td><td id="preview-total" class="p-3 text-right text-lg font-bold"></td></tr>
+            <tr class="bg-gray-100"><td colspan="2"></td><td class="p-3 text-right text-lg font-bold">TOTAL</td><td id="preview-total" class="p-3 text-right text-lg font-bold"></td></tr>
           </tfoot>
         </table>
       </div>
 
-      <!-- Notes -->
-      <div id="notes-container" class="mt-6">
+      <div id="notes-container" class="mt-6" style="display:none;">
         <p class="font-bold text-gray-600">Notes</p>
         <p id="preview-notes" class="text-xs text-gray-500 mt-2 whitespace-pre-line"></p>
       </div>
 
-      <!-- Footer -->
-      <footer class="mt-10 pt-6 border-t text-center">
-        <p class="text-xs text-gray-500">jetweb.in is a proud brand of</p>
-        <img src="jet.png" alt="Jetweb Labs Pvt. Ltd. Logo" class="h-14 mx-auto mt-2">
-        <p class="text-sm font-semibold mt-1">Jetweb Labs Pvt. Ltd.</p>
-        <div class="mt-6 text-left">
-          <p class="text-sm text-gray-600">Authorized Signatory</p>
-          <div class="h-16 border-b border-gray-400 w-48 mt-2"></div>
+      <footer class="mt-10 pt-6 border-t flex justify-between items-end">
+        <div class="text-left">
+          <p class="text-sm text-gray-600 font-bold">Authorized Signatory</p>
+          <img src="signature.png" alt="Signature" class="h-16 w-auto mt-2">
+          <p class="text-sm font-semibold border-t mt-2 pt-1">For Jetweb Labs Pvt. Ltd.</p>
+        </div>
+        <div class="text-right">
+             <p class="text-xs text-gray-500">Thank you for your business!</p>
+             <p class="preview-font text-lg font-bold">Jetweb Labs</p>
         </div>
       </footer>
-
     </div>
   </div>
 </main>
 
 <script>
-  let discountValue = 0, discountLabel = '';
-
   document.addEventListener('DOMContentLoaded', () => {
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('issueDate').value = today;
-    const due = new Date(); due.setDate(due.getDate()+15);
+    const due = new Date(); due.setDate(due.getDate() + 15);
     document.getElementById('dueDate').value = due.toISOString().split('T')[0];
-    addItem(); updateInvoicePreview();
+    generateInvoiceNumber();
+    addItem();
+    updateInvoicePreview();
     document.querySelectorAll('input, textarea, select').forEach(el => el.addEventListener('input', updateInvoicePreview));
   });
 
   function updateInvoicePreview() {
     const currency = document.getElementById('currency').value;
-    const taxRate = parseFloat(document.getElementById('taxRate').value)||0;
-    updateText('clientName','preview-clientName');
-    updateText('clientCompany','preview-clientCompany');
-    updateText('clientAddress','preview-clientAddress');
-    updateText('clientEmail','preview-clientEmail');
-    updateText('clientTax','preview-clientTax','GST/VAT: ');
-    updateText('invoiceNumber','preview-invoiceNumber','Invoice #');
-    updateText('issueDate','preview-issueDate','',formatDate);
-    updateText('dueDate','preview-dueDate','',formatDate);
-    updateText('notes','preview-notes');
+    const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
 
-    const itemListPreview=document.getElementById('preview-itemList'); itemListPreview.innerHTML='';
-    let subtotal=0;
-    document.querySelectorAll('.item-row').forEach(item=>{
-      const desc=item.querySelector('.item-description').value||'Service';
-      const qty=parseFloat(item.querySelector('.item-quantity').value)||0;
-      const rate=parseFloat(item.querySelector('.item-rate').value)||0;
-      const amount=qty*rate; subtotal+=amount;
-      itemListPreview.innerHTML+=`<tr class="border-b"><td class="p-3">${desc}</td><td class="p-3 text-center">${qty}</td><td class="p-3 text-right">${formatCurrency(rate,currency)}</td><td class="p-3 text-right">${formatCurrency(amount,currency)}</td></tr>`;
+    // Update simple text fields
+    updateText('clientName', 'preview-clientName');
+    updateText('clientCompany', 'preview-clientCompany');
+    updateText('clientAddress', 'preview-clientAddress');
+    updateText('clientEmail', 'preview-clientEmail');
+    updateText('clientTax', 'preview-clientTax', 'GST/VAT: ');
+    updateText('invoiceNumber', 'preview-invoiceNumber', '#');
+    updateText('issueDate', 'preview-issueDate', '', formatDate);
+    updateText('dueDate', 'preview-dueDate', '', formatDate);
+    updateText('notes', 'preview-notes');
+    updateText('projectDescription', 'preview-projectDescription');
+
+    // Show/hide optional sections
+    toggleElementVisibility('projectDescription', 'preview-description-container');
+    toggleElementVisibility('notes', 'notes-container');
+    
+    // Update milestones
+    const milestoneListPreview = document.getElementById('preview-milestoneList');
+    milestoneListPreview.innerHTML = '';
+    let milestoneCount = 0;
+    document.querySelectorAll('.milestone-row').forEach(milestone => {
+        const desc = milestone.querySelector('.milestone-description').value;
+        if (desc) {
+            milestoneListPreview.innerHTML += `<li>${desc}</li>`;
+            milestoneCount++;
+        }
     });
+    document.getElementById('preview-milestones-container').style.display = milestoneCount > 0 ? 'block' : 'none';
 
-    let discounted=subtotal-discountValue; if(discountValue===0) discounted=subtotal;
-    const tax=discounted*(taxRate/100), total=discounted+tax;
+    // Update service items
+    const itemListPreview = document.getElementById('preview-itemList');
+    itemListPreview.innerHTML = '';
+    let subtotal = 0;
+    document.querySelectorAll('.item-row').forEach(item => {
+      const desc = item.querySelector('.item-description').value || 'Service Description';
+      const qty = parseFloat(item.querySelector('.item-quantity').value) || 0;
+      const rate = parseFloat(item.querySelector('.item-rate').value) || 0;
+      const amount = qty * rate;
+      subtotal += amount;
+      itemListPreview.innerHTML += `<tr class="border-b"><td class="p-3">${desc}</td><td class="p-3 text-center">${qty}</td><td class="p-3 text-right">${formatCurrency(rate, currency)}</td><td class="p-3 text-right">${formatCurrency(amount, currency)}</td></tr>`;
+    });
+    
+    // Calculate discount
+    const discountType = document.getElementById('discountType').value;
+    let discountValue = 0;
+    let discountLabel = '';
+    if (discountType.includes('_flat')) {
+        discountValue = parseFloat(discountType.split('_')[0]);
+        discountLabel = `Discount (Flat ${formatCurrency(discountValue, currency)})`;
+    } else if (parseFloat(discountType) > 0) {
+        const discountRate = parseFloat(discountType);
+        discountValue = subtotal * (discountRate / 100);
+        discountLabel = `Discount (${discountRate}%)`;
+    }
 
-    document.getElementById('preview-subtotal').textContent=formatCurrency(subtotal,currency);
-    document.getElementById('preview-discountLabel').textContent=discountValue>0?discountLabel:'';
-    document.getElementById('preview-discount').textContent=discountValue>0?'-'+formatCurrency(discountValue,currency):'';
-    document.getElementById('preview-taxLabel').textContent=`Tax (${taxRate}%)`;
-    document.getElementById('preview-tax').textContent=formatCurrency(tax,currency);
-    document.getElementById('preview-total').textContent=formatCurrency(total,currency);
+    const discountedSubtotal = subtotal - discountValue;
+    const tax = discountedSubtotal * (taxRate / 100);
+    const total = discountedSubtotal + tax;
+
+    // Update totals
+    document.getElementById('preview-subtotal').textContent = formatCurrency(subtotal, currency);
+    document.getElementById('discount-row').style.display = discountValue > 0 ? 'table-row' : 'none';
+    document.getElementById('preview-discountLabel').textContent = discountLabel;
+    document.getElementById('preview-discount').textContent = '-' + formatCurrency(discountValue, currency);
+    document.getElementById('preview-taxLabel').textContent = `Tax (${taxRate}%)`;
+    document.getElementById('preview-tax').textContent = formatCurrency(tax, currency);
+    document.getElementById('preview-total').textContent = formatCurrency(total, currency);
   }
 
-  function addItem(){
-    const item=document.createElement('div');
-    item.classList.add('item-row','flex','items-center','gap-2');
-    item.innerHTML=`<input type="text" placeholder="Description" class="form-input item-description p-2 rounded-md flex-grow"><input type="number" value="1" class="form-input item-quantity p-2 rounded-md w-20 text-center"><input type="number" placeholder="Rate" class="form-input item-rate p-2 rounded-md w-28 text-right"><button onclick="removeItem(this)" class="btn-secondary h-10 w-10 flex items-center justify-center rounded-md hover:bg-red-500">×</button>`;
-    document.getElementById('item-list').appendChild(item);
-    item.querySelectorAll('input').forEach(el=>el.addEventListener('input',updateInvoicePreview));
+  function createDynamicItem(type) {
+    const isService = type === 'service';
+    const listId = isService ? 'item-list' : 'milestone-list';
+    const rowClass = isService ? 'item-row' : 'milestone-row';
+    const descClass = isService ? 'item-description' : 'milestone-description';
+    const placeholder = isService ? "Description" : "Milestone (e.g., 'Phase 1 Complete')";
+
+    const item = document.createElement('div');
+    item.classList.add(rowClass, 'flex', 'items-center', 'gap-2');
+    
+    let innerHTML = `<input type="text" placeholder="${placeholder}" class="form-input ${descClass} p-2 rounded-md flex-grow">`;
+    if (isService) {
+        innerHTML += `<input type="number" value="1" class="form-input item-quantity p-2 rounded-md w-20 text-center"><input type="number" placeholder="Rate" class="form-input item-rate p-2 rounded-md w-28 text-right">`;
+    }
+    innerHTML += `<button onclick="removeItem(this)" class="btn-secondary h-10 w-10 flex items-center justify-center rounded-md hover:bg-red-500 text-xl">×</button>`;
+    
+    item.innerHTML = innerHTML;
+    document.getElementById(listId).appendChild(item);
+    item.querySelectorAll('input').forEach(el => el.addEventListener('input', updateInvoicePreview));
     updateInvoicePreview();
   }
-  function removeItem(btn){ btn.parentElement.remove(); updateInvoicePreview(); }
-  function generateInvoiceNumber(){ document.getElementById('invoiceNumber').value="INV-"+Date.now(); updateInvoicePreview(); }
-  function updateText(id,pid,prefix='',fmt=null){ const v=document.getElementById(id).value; document.getElementById(pid).textContent=fmt?fmt(v):prefix?prefix+v:v; }
-  function formatDate(ds){ if(!ds)return''; return new Date(ds+'T00:00:00').toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}); }
-  function formatCurrency(a,c){ return c+a.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,","); }
+  
+  function addItem() { createDynamicItem('service'); }
+  function addMilestone() { createDynamicItem('milestone'); }
+  function removeItem(btn) { btn.parentElement.remove(); updateInvoicePreview(); }
+  
+  function generateInvoiceNumber() { 
+    const now = new Date();
+    const prefix = "JWL";
+    const number = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}-${Math.floor(100 + Math.random() * 900)}`;
+    document.getElementById('invoiceNumber').value = `${prefix}-${number}`; 
+    updateInvoicePreview(); 
+  }
+  
+  function updateText(inputId, previewId, prefix = '', formatter = null) {
+    const value = document.getElementById(inputId).value;
+    const previewElement = document.getElementById(previewId);
+    if(value) {
+        previewElement.textContent = formatter ? formatter(value) : (prefix ? prefix + value : value);
+    } else {
+        previewElement.textContent = '';
+    }
+  }
 
-  function applyDiscount(){
-    const code=document.getElementById('discountCode').value.trim().toUpperCase();
-    const subtotal=[...document.querySelectorAll('.item-row')].reduce((s,i)=>{const q=parseFloat(i.querySelector('.item-quantity').value)||0; const r=parseFloat(i.querySelector('.item-rate').value)||0; return s+(q*r);},0);
-    discountValue=0; discountLabel='';
-    if(code==='NEW10'){ discountValue=subtotal*0.10; discountLabel='Discount (NEW10 - 10%)'; }
-    if(code==='LOYAL20'){ discountValue=subtotal*0.20; discountLabel='Discount (LOYAL20 - 20%)'; }
-    if(code==='FLAT500'){ discountValue=500; discountLabel='Discount (Flat ₹500)'; }
-    updateInvoicePreview();
+  function toggleElementVisibility(inputId, containerId) {
+      const value = document.getElementById(inputId).value;
+      document.getElementById(containerId).style.display = value ? 'block' : 'none';
+  }
+
+  function formatDate(dateString) {
+    if (!dateString) return '';
+    return new Date(dateString + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function formatCurrency(amount, currencySymbol) {
+    return currencySymbol + amount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  
+  function generateAndPrint() {
+      const clientName = document.getElementById('clientName').value.trim() || 'Invoice';
+      const invoiceNumber = document.getElementById('invoiceNumber').value.trim();
+      const originalTitle = document.title;
+      
+      document.title = `${clientName}_${invoiceNumber}`;
+      window.print();
+      
+      // Restore the original title after the print dialog has been handled
+      setTimeout(() => {
+          document.title = originalTitle;
+      }, 500);
   }
 </script>
 </body>
