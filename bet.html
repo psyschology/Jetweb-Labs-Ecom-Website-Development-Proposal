@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposal: Full-Featured Betting Website MVP</title>
+    <title>Proposal: Foundational Betting Platform (Phase 1)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -26,14 +26,11 @@
         .table-cell {
             @apply px-4 py-4 text-sm text-gray-700;
         }
-        .pill {
-            @apply inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full;
-        }
     </style>
 </head>
 <body class="bg-slate-100">
     <!-- Chosen Palette: Professional Blue & Slate -->
-    <!-- Application Structure Plan: A single-column, responsive landing page with a sticky top navigation for enhanced usability. The structure follows a logical flow from a high-level summary to granular details, building a case for the MVP approach before presenting the cost and clear next steps. -->
+    <!-- Application Structure Plan: A single-column, responsive landing page with a sticky top navigation for enhanced usability. The structure follows a logical flow from a high-level summary to granular details, building a case for the Phase 1 approach before presenting the cost and clear next steps. -->
     <!-- Visualization & Content Choices: The core visualization is the highly-detailed cost table, providing maximum transparency. Content is structured into collapsible sections for clarity. The primary interactive element is the mobile navigation menu. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
@@ -75,24 +72,24 @@
 
     <div class="max-w-4xl mx-auto pt-12">
         <div class="text-center px-4">
-            <h1 class="section-title">Proposal: Full-Featured Betting Website MVP</h1>
+            <h1 class="section-title">Proposal: Foundational Betting Platform (Phase 1)</h1>
             <p class="section-subtitle">A strategic plan to launch, test, and secure funding for your platform.</p>
-            <p class="text-sm text-gray-500">Date: 12 September 2025 | Budget: ₹1,30,000 INR (Fixed)</p>
+            <p class="text-sm text-gray-500">Date: 12 September 2025 | Budget: ₹2,00,000 INR (Fixed)</p>
         </div>
 
         <main class="space-y-8 p-4 mt-8">
 
             <section id="summary" class="card p-8">
                 <h2 class="text-2xl font-bold text-gray-900">Executive Summary</h2>
-                <p class="mt-4 text-gray-600">We will deliver a production-ready MVP (Minimum Viable Product) of a full betting website experience, optimized for web and mobile. The deliverable will allow users to register, login, deposit (via configured gateway), place bets on sports/games using dummy or static odds, view betting history, request withdrawals, and includes an admin panel to manage users and bets.</p>
+                <p class="mt-4 text-gray-600">We will deliver a production-ready Phase 1 Platform: a full betting website experience, optimized for web and mobile. The deliverable will allow users to register, login, deposit (via configured gateway), place bets on sports/games using dummy or static odds, view betting history, request withdrawals, and includes an admin panel to manage users and bets.</p>
                 <div class="mt-6 p-4 bg-blue-50 rounded-lg">
-                    <h3 class="font-bold text-blue-800">Why an MVP-First Approach is Smart</h3>
-                    <p class="mt-2 text-sm text-blue-700">Full production betting platforms require expensive licensing, third-party live odds feeds, and lengthy payment processor approvals. With this MVP, you get a tangible, working product to test business flows, gather user feedback, and demonstrate traction to secure funding or merchant accounts for the full-scale launch.</p>
+                    <h3 class="font-bold text-blue-800">Why a Phased Approach is Smart</h3>
+                    <p class="mt-2 text-sm text-blue-700">Full production betting platforms require expensive licensing, third-party live odds feeds, and lengthy payment processor approvals. With this foundational platform, you get a tangible, working product to test business flows, gather user feedback, and demonstrate traction to secure funding or merchant accounts for a full-scale launch.</p>
                 </div>
             </section>
 
             <section id="mvp-scope" class="card p-8">
-                <h2 class="text-2xl font-bold text-gray-900">MVP Scope (Included in ₹1.3L)</h2>
+                <h2 class="text-2xl font-bold text-gray-900">Phase 1 Scope (Included in ₹2.0L)</h2>
                 <div class="mt-6 space-y-6">
                     <div>
                         <h3 class="text-lg font-semibold text-gray-800">User-Facing Features</h3>
@@ -101,7 +98,7 @@
                             <li><strong>Profile & KYC Placeholder:</strong> Profile page with a form to request KYC (full verification service is out of scope).</li>
                             <li><strong>Wallet (Internal Ledger):</strong> Credit (deposit request), debit (place bet), and balance view.</li>
                             <li><strong>Deposit & Withdraw Flows:</strong> Admin-approved request flows for deposits and withdrawals.</li>
-                            <li><strong>Betting UI:</strong> Sports/games listing, match details, and a betting slip for placing bets (using static/manual odds for the MVP).</li>
+                            <li><strong>Betting UI:</strong> Sports/games listing, match details, and a betting slip for placing bets (using static/manual odds for Phase 1).</li>
                             <li><strong>History & Receipts:</strong> Complete user bet history and individual bet receipts.</li>
                             <li><strong>Legal Pages:</strong> Templates for Responsible Gaming, Terms & Conditions, and Privacy Policy.</li>
                             <li><strong>Basic Email Notifications:</strong> For account creation and deposit request confirmation.</li>
@@ -113,7 +110,7 @@
                         <ul class="mt-4 space-y-3 list-disc list-inside text-gray-700">
                              <li><strong>User Management:</strong> View, suspend, and manage KYC status for all users.</li>
                              <li><strong>Wallet Adjustments:</strong> Admin override for manual credit/debit adjustments.</li>
-                             <li><strong>Event Management:</strong> Create and manage events & matches with manual odds entry for the MVP.</li>
+                             <li><strong>Event Management:</strong> Create and manage events & matches with manual odds entry.</li>
                              <li><strong>Bet Management:</strong> View all bets, perform manual settlement, and export reports to CSV.</li>
                              <li><strong>Transaction Management:</strong> Approve or reject deposit and withdrawal requests.</li>
                         </ul>
@@ -133,7 +130,7 @@
             
             <section id="out-of-scope" class="card p-8 bg-amber-50">
                 <h2 class="text-2xl font-bold text-gray-900">Out of Scope (Not in this Budget)</h2>
-                 <p class="mt-2 text-gray-600">To maintain budget and timeline, these are excluded from the MVP:</p>
+                 <p class="mt-2 text-gray-600">To maintain budget and timeline, these are excluded from Phase 1:</p>
                 <ul class="mt-6 space-y-3 list-disc list-inside text-gray-700">
                     <li><strong>Live Odds Feed APIs:</strong> Integration with services like Sportradar (these are separate, licensed products).</li>
                     <li><strong>Merchant Onboarding/Fees:</strong> Client is responsible for payment gateway fees and securing a compliant merchant account.</li>
@@ -145,7 +142,7 @@
             </section>
 
             <section id="timeline" class="card p-8">
-                <h2 class="text-2xl font-bold text-gray-900">Timeline & Milestones (30-Day MVP Delivery)</h2>
+                <h2 class="text-2xl font-bold text-gray-900">Timeline & Milestones (30-Day Delivery)</h2>
                 <div class="mt-6 flow-root">
                     <ul class="-mb-8">
                         <li><div class="relative pb-8"><span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></span><div class="relative flex space-x-3"><div><span class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center ring-8 ring-white"><p class="text-white font-bold text-xs">1</p></span></div><div class="min-w-0 flex-1 pt-1.5"><p class="text-sm text-gray-500"><strong>Days 0-2:</strong> Kickoff & Requirement Freeze (post-advance)</p></div></div></div></li>
@@ -159,14 +156,14 @@
             <section id="payment" class="card p-8">
                  <h2 class="text-2xl font-bold text-gray-900">Milestones & Payment Schedule</h2>
                  <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                     <div class="border border-gray-200 rounded-lg p-4"><p class="text-lg font-semibold text-blue-600">Milestone 1 (Start)</p><p class="text-2xl font-bold">₹65,000</p><p class="text-sm text-gray-500">50% advance to begin work</p></div>
-                     <div class="border border-gray-200 rounded-lg p-4"><p class="text-lg font-semibold text-blue-600">Milestone 2 (MVP Demo)</p><p class="text-2xl font-bold">₹32,500</p><p class="text-sm text-gray-500">25% on functionality demo</p></div>
-                     <div class="border border-gray-200 rounded-lg p-4"><p class="text-lg font-semibold text-blue-600">Milestone 3 (Handover)</p><p class="text-2xl font-bold">₹32,500</p><p class="text-sm text-gray-500">25% on final delivery</p></div>
+                     <div class="border border-gray-200 rounded-lg p-4"><p class="text-lg font-semibold text-blue-600">Milestone 1 (Start)</p><p class="text-2xl font-bold">₹1,00,000</p><p class="text-sm text-gray-500">50% advance to begin work</p></div>
+                     <div class="border border-gray-200 rounded-lg p-4"><p class="text-lg font-semibold text-blue-600">Milestone 2 (Demo)</p><p class="text-2xl font-bold">₹50,000</p><p class="text-sm text-gray-500">25% on functionality demo</p></div>
+                     <div class="border border-gray-200 rounded-lg p-4"><p class="text-lg font-semibold text-blue-600">Milestone 3 (Handover)</p><p class="text-2xl font-bold">₹50,000</p><p class="text-sm text-gray-500">25% on final delivery</p></div>
                  </div>
             </section>
             
             <section id="cost-breakdown" class="card p-8">
-                <h2 class="text-2xl font-bold text-gray-900">Full Cost Breakdown (₹1,30,000)</h2>
+                <h2 class="text-2xl font-bold text-gray-900">Full Cost Breakdown (₹2,00,000)</h2>
                 <div class="mt-6 flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -181,20 +178,20 @@
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
-                                        <tr><td class="table-cell font-medium">Project Management & Kickoff</td><td class="table-cell text-right">5,000</td><td class="table-cell">10h @ ₹500/hr</td><td class="table-cell">Coordination, client calls, milestone tracking.</td></tr>
-                                        <tr><td class="table-cell font-medium">UI / UX Design</td><td class="table-cell text-right">20,000</td><td class="table-cell">40h @ ₹500/hr</td><td class="table-cell">Wireframes & responsive UI for all user flows.</td></tr>
-                                        <tr><td class="table-cell font-medium">Frontend Development (Next.js)</td><td class="table-cell text-right">28,000</td><td class="table-cell">70h @ ₹400/hr</td><td class="table-cell">User UI, betting slip, profiles, responsive logic.</td></tr>
-                                        <tr><td class="table-cell font-medium">Backend Development (API, Wallet)</td><td class="table-cell text-right">32,000</td><td class="table-cell">80h @ ₹400/hr</td><td class="table-cell">Secure auth, wallet ledger, bet APIs, transactions.</td></tr>
-                                        <tr><td class="table-cell font-medium">Admin Panel Development</td><td class="table-cell text-right">15,000</td><td class="table-cell">37.5h @ ₹400/hr</td><td class="table-cell">Dashboards, manual odds, settlement, exports.</td></tr>
-                                        <tr><td class="table-cell font-medium">Payment & Wallet Integration</td><td class="table-cell text-right">8,000</td><td class="table-cell">20h @ ₹400/hr</td><td class="table-cell">Integrate payment SDK, record transaction flows.</td></tr>
-                                        <tr><td class="table-cell font-medium">Testing & QA</td><td class="table-cell text-right">6,000</td><td class="table-cell">15h @ ₹400/hr</td><td class="table-cell">Functional testing, bug fixes, cross-browser checks.</td></tr>
+                                        <tr><td class="table-cell font-medium">Project Management & Kickoff</td><td class="table-cell text-right">7,500</td><td class="table-cell">15h @ ₹500/hr</td><td class="table-cell">Coordination, client calls, milestone tracking.</td></tr>
+                                        <tr><td class="table-cell font-medium">UI / UX Design</td><td class="table-cell text-right">30,000</td><td class="table-cell">60h @ ₹500/hr</td><td class="table-cell">Wireframes & responsive UI for all user flows.</td></tr>
+                                        <tr><td class="table-cell font-medium">Frontend Development (Next.js)</td><td class="table-cell text-right">40,000</td><td class="table-cell">100h @ ₹400/hr</td><td class="table-cell">User UI, betting slip, profiles, responsive logic.</td></tr>
+                                        <tr><td class="table-cell font-medium">Backend Development (API, Wallet)</td><td class="table-cell text-right">48,000</td><td class="table-cell">120h @ ₹400/hr</td><td class="table-cell">Secure auth, wallet ledger, bet APIs, transactions.</td></tr>
+                                        <tr><td class="table-cell font-medium">Admin Panel Development</td><td class="table-cell text-right">25,000</td><td class="table-cell">62.5h @ ₹400/hr</td><td class="table-cell">Dashboards, manual odds, settlement, exports.</td></tr>
+                                        <tr><td class="table-cell font-medium">Payment & Wallet Integration</td><td class="table-cell text-right">12,000</td><td class="table-cell">30h @ ₹400/hr</td><td class="table-cell">Integrate payment SDK, record transaction flows.</td></tr>
+                                        <tr><td class="table-cell font-medium">Testing & QA</td><td class="table-cell text-right">10,000</td><td class="table-cell">25h @ ₹400/hr</td><td class="table-cell">Functional testing, bug fixes, cross-browser checks.</td></tr>
                                         <tr><td class="table-cell font-medium">Deployment & Environment Setup</td><td class="table-cell text-right">5,000</td><td class="table-cell">12.5h @ ₹400/hr</td><td class="table-cell">Docker, Nginx, SSL, basic CI/CD setup.</td></tr>
-                                        <tr><td class="table-cell font-medium">Security Hardening (Basic)</td><td class="table-cell text-right">4,000</td><td class="table-cell">10h @ ₹400/hr</td><td class="table-cell">HTTPS, input validation, hashing, rate limits.</td></tr>
-                                        <tr><td class="table-cell font-medium">Documentation & Training</td><td class="table-cell text-right">3,000</td><td class="table-cell">6h @ ₹500/hr</td><td class="table-cell">Handover docs, admin guide, API notes.</td></tr>
-                                        <tr><td class="table-cell font-medium">Contingency / Buffer</td><td class="table-cell text-right">4,000</td><td class="table-cell">buffer</td><td class="table-cell">Minor scope changes, urgent fixes.</td></tr>
+                                        <tr><td class="table-cell font-medium">Security Hardening (Basic)</td><td class="table-cell text-right">6,000</td><td class="table-cell">15h @ ₹400/hr</td><td class="table-cell">HTTPS, input validation, hashing, rate limits.</td></tr>
+                                        <tr><td class="table-cell font-medium">Documentation & Training</td><td class="table-cell text-right">4,500</td><td class="table-cell">9h @ ₹500/hr</td><td class="table-cell">Handover docs, admin guide, API notes.</td></tr>
+                                        <tr><td class="table-cell font-medium">Contingency / Buffer</td><td class="table-cell text-right">12,000</td><td class="table-cell">buffer</td><td class="table-cell">Minor scope changes, urgent fixes.</td></tr>
                                     </tbody>
                                     <tfoot>
-                                        <tr class="bg-gray-50"><td colspan="1" class="px-4 py-4 text-right font-bold text-gray-700 text-base">Total Project Cost</td><td class="px-4 py-4 text-right font-bold text-gray-900 text-base">₹1,30,000</td><td colspan="2"></td></tr>
+                                        <tr class="bg-gray-50"><td colspan="1" class="px-4 py-4 text-right font-bold text-gray-700 text-base">Total Project Cost</td><td class="px-4 py-4 text-right font-bold text-gray-900 text-base">₹2,00,000</td><td colspan="2"></td></tr>
                                     </tfoot>
                                 </table>
                             </div>
@@ -203,7 +200,7 @@
                 </div>
                 <div class="mt-6 p-4 bg-gray-50 rounded-lg text-center">
                     <h3 class="font-semibold text-gray-800">Why This Pricing is Realistic</h3>
-                    <p class="mt-2 text-sm text-gray-600">This budget is focused on delivering a testable, production-grade MVP by avoiding expensive licensed integrations (like live odds feeds) in this initial phase. This enables you to demo to investors, secure merchant relationships, and get initial users before scaling to full production.</p>
+                     <p class="mt-2 text-sm text-gray-600">This budget is focused on delivering a robust, production-grade foundational platform by avoiding expensive licensed integrations (like live odds feeds) in this initial phase. This enables you to demo to investors, secure merchant relationships, and get initial users before scaling to full production.</p>
                 </div>
             </section>
 
@@ -221,10 +218,10 @@
                 <h2 class="text-3xl font-bold text-gray-900">Next Steps to Get Started</h2>
                 <div class="mt-8 max-w-md mx-auto space-y-4 text-left">
                     <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-600 text-white font-bold text-lg">1</div><p class="ml-4 text-gray-700">Confirm the scope and we will send a simple Statement of Work (SOW).</p></div>
-                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-600 text-white font-bold text-lg">2</div><p class="ml-4 text-gray-700">Pay the 50% advance (₹65,000) to start. We will provide bank/UPI details.</p></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-600 text-white font-bold text-lg">2</div><p class="ml-4 text-gray-700">Pay the 50% advance (₹1,00,000) to start. We will provide bank/UPI details.</p></div>
                     <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-600 text-white font-bold text-lg">3</div><p class="ml-4 text-gray-700">We schedule the kickoff meeting within 24 hours of payment receipt.</p></div>
                 </div>
-                <p class="mt-8 text-sm text-gray-600">Contact us at <a href="mailto: support@jetweblabs.in" class="font-medium text-blue-600 hover:underline">sales@jetweblabs.in</a> with any questions.</p>
+                <p class="mt-8 text-sm text-gray-600">Contact us at <a href="mailto:support@jetweblabs.in" class="font-medium text-blue-600 hover:underline">sales@jetweblabs.in</a> with any questions.</p>
             </section>
 
         </main>
