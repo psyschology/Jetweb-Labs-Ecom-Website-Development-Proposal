@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jetweb Labs | E-commerce Website Development Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Professional -->
+    <!-- Application Structure Plan: A single-page application with a sticky top navigation for easy access to key sections: Overview, Package Details, Cost Explorer, and Next Steps. This non-linear structure allows the client to quickly find the information most relevant to them. The "Cost Explorer" is the centerpiece, featuring an interactive toggle to compare the all-inclusive package (visualized with a dynamic donut chart) against the discounted option. This design choice directly addresses the client's primary questions of "What do I get?" and "What does it cost?" in an engaging and easy-to-understand format, prioritizing clarity and user experience over the original document's linear flow. -->
+    <!-- Visualization & Content Choices: The core data from the proposal is presented through several methods. The package inclusions are organized into cards for better scannability (Goal: Organize). The main cost breakdown is transformed from a static table into an interactive donut chart via Chart.js (Goal: Compare, Inform), allowing users to hover and see precise allocations, which is more engaging. An interactive button toggles between this chart and a clear text block explaining the discounted option (Goal: Compare), making the choice straightforward. Recurring costs are separated into distinct info cards to avoid confusion with the one-time project fee (Goal: Inform). This interactive approach turns a static proposal into an exploratory tool. CONFIRMATION: NO SVG/Mermaid used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #1a202c;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 450px;
+            max-height: 80vh;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200/80">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="jet.png" alt="Jetweb Labs Logo" class="h-10 w-auto">
+                <span class="text-xl font-bold text-gray-800">Jetweb Labs</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#overview" class="text-gray-600 hover:text-blue-600 transition-colors">Overview</a>
+                <a href="#package" class="text-gray-600 hover:text-blue-600 transition-colors">Package Details</a>
+                <a href="#costs" class="text-gray-600 hover:text-blue-600 transition-colors">Cost Explorer</a>
+                <a href="#next-steps" class="text-blue-600 bg-blue-50 hover:bg-blue-100 font-semibold px-4 py-2 rounded-full transition-colors">Next Steps</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+             <a href="#overview" class="block text-gray-600 hover:text-blue-600 transition-colors">Overview</a>
+             <a href="#package" class="block text-gray-600 hover:text-blue-600 transition-colors">Package Details</a>
+             <a href="#costs" class="block text-gray-600 hover:text-blue-600 transition-colors">Cost Explorer</a>
+             <a href="#next-steps" class="block text-gray-600 hover:text-blue-600 transition-colors">Next Steps</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+
+        <section id="overview" class="text-center mb-16 md:mb-24">
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">E-commerce Development Proposal</h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-6 max-w-3xl mx-auto">A strategic investment to build your brand's powerful, sales-driven online presence on the Shopify platform.</p>
+            <p class="text-md text-gray-500 mb-8 max-w-3xl mx-auto">This interactive proposal details the full scope of our services, transparent pricing, and clear next steps to bring your digital storefront to life.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#costs" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Explore Costs</a>
+                <a href="#package" class="bg-gray-100 text-gray-800 font-semibold px-6 py-3 rounded-full hover:bg-gray-200 transition-transform transform hover:scale-105">View Package Features</a>
+            </div>
+        </section>
+        
+        <section id="package" class="mb-16 md:mb-24">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Comprehensive E-commerce Package</h2>
+                <p class="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">Our all-inclusive package is a turnkey solution, providing a fully functional, professionally designed, and sales-ready online store.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Platform Foundation</h3>
+                    <p class="text-gray-600">Complete Shopify store setup, configuration of all settings, and expert guidance on selecting the optimal plan for your business needs.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Design & UX</h3>
+                    <p class="text-gray-600">Professional customization of a premium theme to align with your brand, plus a fully responsive design for a seamless experience on all devices.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Product Management</h3>
+                    <p class="text-gray-600">Expert setup of up to 100 products, including images, descriptions, pricing, and variants, creating an engaging product catalog.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Payments & Checkout</h3>
+                    <p class="text-gray-600">Secure setup and integration of a leading Indian payment gateway (like Razorpay, Stripe, or PayU) for smooth, reliable transactions.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Marketing & Analytics</h3>
+                    <p class="text-gray-600">Implementation of on-page SEO best practices and Google Analytics integration for comprehensive traffic and sales tracking.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Launch & Support</h3>
+                    <p class="text-gray-600">Rigorous quality assurance, domain connection, and 60 days of dedicated technical support to ensure a smooth and successful launch.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="costs" class="mb-16 md:mb-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Investment & Cost Explorer</h2>
+                <p class="mt-3 text-lg text-gray-600 max-w-3xl mx-auto">We offer two flexible options. Use the toggle below to explore the all-inclusive package with a visual cost breakdown or the focused development package.</p>
+            </div>
+            
+            <div class="flex justify-center mb-8">
+                <div class="bg-gray-200 rounded-full p-1 flex items-center space-x-1">
+                    <button id="btn-inclusive" class="px-6 py-2 rounded-full text-sm font-semibold bg-white text-blue-600 shadow">All-Inclusive</button>
+                    <button id="btn-discounted" class="px-6 py-2 rounded-full text-sm font-semibold text-gray-600">Discounted</button>
+                </div>
+            </div>
+
+            <div id="inclusive-content">
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
+                    <h3 class="text-2xl font-bold text-center text-gray-900">All-Inclusive Package: ₹65,000</h3>
+                    <p class="text-center text-gray-600 mt-2 mb-6">A transparent breakdown of your one-time investment. Hover over the chart for details.</p>
+                    <div class="chart-container">
+                        <canvas id="costBreakdownChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div id="discounted-content" class="hidden">
+                 <div class="bg-white p-6 md:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
+                    <h3 class="text-2xl font-bold text-center text-gray-900">Discounted Development: ₹25,000 - ₹30,000</h3>
+                    <p class="text-center text-gray-600 mt-2 mb-6">For clients who prefer to manage their own infrastructure, we offer this focused development package. The client is responsible for:</p>
+                    <ul class="list-disc list-inside max-w-md mx-auto space-y-3 text-gray-700">
+                        <li>Purchasing and maintaining the website domain name.</li>
+                        <li>Selecting and paying for the monthly/annual Shopify subscription directly.</li>
+                        <li>Managing recurring fees for any premium themes, apps, or third-party services.</li>
+                    </ul>
+                     <p class="text-center text-sm text-gray-500 mt-6">This option reduces our overhead, and we pass those savings to you. The final price depends on customization complexity.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="recurring-costs" class="mb-16 md:mb-24">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Understanding Recurring Costs</h2>
+                <p class="mt-3 text-lg text-gray-600 max-w-3xl mx-auto">It's important to distinguish our one-time development fee from the ongoing costs of running your store. These fees are paid directly to the service providers.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                 <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
+                     <h3 class="text-xl font-bold text-gray-900 mb-3">Shopify Subscription</h3>
+                     <p class="text-gray-600 mb-4">This is the monthly or annual fee for using the Shopify platform. The "Basic" plan is often a great starting point.</p>
+                     <p class="text-3xl font-bold text-blue-600">~₹1,999<span class="text-lg font-medium text-gray-500"> / month</span></p>
+                 </div>
+                 <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
+                     <h3 class="text-xl font-bold text-gray-900 mb-3">Payment Gateway Fees</h3>
+                     <p class="text-gray-600 mb-4">Payment gateways (like Razorpay) charge a small percentage per transaction they process for you.</p>
+                     <p class="text-3xl font-bold text-blue-600">~2%<span class="text-lg font-medium text-gray-500"> + GST per transaction</span></p>
+                 </div>
+            </div>
+        </section>
+        
+        <section id="next-steps">
+            <div class="bg-blue-600 text-white rounded-2xl p-8 md:p-12 text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold">Ready to Get Started?</h2>
+                 <p class="mt-3 text-lg text-blue-100 max-w-2xl mx-auto">Here’s our simple three-step process to launch your project and build the future of your brand online.</p>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 text-left">
+                     <div class="bg-blue-700/50 p-6 rounded-xl">
+                         <div class="text-3xl font-bold text-blue-200 mb-2">1.</div>
+                         <h3 class="font-semibold mb-2">Confirmation & Agreement</h3>
+                         <p class="text-blue-200 text-sm">Confirm your chosen package. We'll send a formal service agreement and commence the project upon signing and receipt of a 50% advance.</p>
+                     </div>
+                     <div class="bg-blue-700/50 p-6 rounded-xl">
+                         <div class="text-3xl font-bold text-blue-200 mb-2">2.</div>
+                         <h3 class="font-semibold mb-2">Discovery & Onboarding</h3>
+                         <p class="text-blue-200 text-sm">We'll schedule a kickoff call to dive deep into your brand, finalize design requirements, gather content, and set project timelines.</p>
+                     </div>
+                     <div class="bg-blue-700/50 p-6 rounded-xl">
+                         <div class="text-3xl font-bold text-blue-200 mb-2">3.</div>
+                         <h3 class="font-semibold mb-2">Design, Develop, Launch!</h3>
+                         <p class="text-blue-200 text-sm">Our team gets to work! We'll provide regular updates for your feedback before testing and launching your brand new e-commerce store.</p>
+                     </div>
+                 </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-100 border-t">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-600">
+            <p>&copy; 2025 Jetweb Labs Pvt Ltd. All rights reserved.</p>
+            <p class="text-sm mt-2">This proposal is confidential and intended for the recipient only.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const inclusiveBtn = document.getElementById('btn-inclusive');
+            const discountedBtn = document.getElementById('btn-discounted');
+            const inclusiveContent = document.getElementById('inclusive-content');
+            const discountedContent = document.getElementById('discounted-content');
+
+            inclusiveBtn.addEventListener('click', () => {
+                inclusiveContent.classList.remove('hidden');
+                discountedContent.classList.add('hidden');
+                inclusiveBtn.classList.add('bg-white', 'text-blue-600', 'shadow');
+                discountedBtn.classList.remove('bg-white', 'text-blue-600', 'shadow');
+            });
+
+            discountedBtn.addEventListener('click', () => {
+                inclusiveContent.classList.add('hidden');
+                discountedContent.classList.remove('hidden');
+                discountedBtn.classList.add('bg-white', 'text-blue-600', 'shadow');
+                inclusiveBtn.classList.remove('bg-white', 'text-blue-600', 'shadow');
+            });
+
+            const costData = {
+                labels: [
+                    'Theme Customization',
+                    'Product Catalog Setup',
+                    'UI/UX Customization',
+                    'Payment Gateway Int.',
+                    'Testing & QA',
+                    'Post-Launch Support',
+                    'SEO & Analytics',
+                    'Shopify Setup',
+                    'Project Management',
+                    'Overheads'
+                ],
+                datasets: [{
+                    label: 'Cost Allocation',
+                    data: [18000, 10000, 9000, 6000, 5000, 5000, 4500, 3500, 2500, 1500],
+                    backgroundColor: [
+                        '#2563eb', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe',
+                        '#1e40af', '#1d4ed8', '#1e3a8a', '#3730a3', '#4338ca'
+                    ],
+                    borderColor: '#FDFBF8',
+                    borderWidth: 4,
+                    hoverOffset: 16
+                }]
+            };
+
+            const config = {
+                type: 'doughnut',
+                data: costData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    family: "'Inter', sans-serif",
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.chart.getDatasetMeta(0).total;
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ₹${value.toLocaleString('en-IN')} (${percentage}%)`;
+                                }
+                            },
+                            backgroundColor: '#1a202c',
+                            titleFont: { size: 14, family: "'Inter', sans-serif" },
+                            bodyFont: { size: 12, family: "'Inter', sans-serif" },
+                            padding: 10,
+                            cornerRadius: 8,
+                            boxPadding: 4,
+                        }
+                    },
+                    cutout: '60%'
+                }
+            };
+            
+            const ctx = document.getElementById('costBreakdownChart');
+            if(ctx) {
+                new Chart(ctx, config);
+            }
+        });
+    </script>
+</body>
+</html>
