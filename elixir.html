@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elixir Beverages - Drink The Difference</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1497515114629-48446e82f8AC?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .logo-infinity {
+            font-size: 2.5rem; /* Adjusted size */
+            line-height: 1;
+            font-weight: 700;
+            color: #3B82F6; /* A vibrant blue */
+        }
+        .section-title {
+            @apply text-3xl md:text-4xl font-bold text-gray-800 text-center;
+        }
+        .section-subtitle {
+            @apply text-lg text-gray-600 mt-4 max-w-3xl mx-auto text-center;
+        }
+        /* Mobile Sidebar Transition */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <div class="logo-infinity">∞</div>
+                <div class="flex flex-col -space-y-1">
+                    <span class="text-2xl font-bold text-gray-800 tracking-wider">ELIXIR</span>
+                    <span class="text-xs font-semibold text-gray-500 tracking-widest">BEVERAGES</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300">Why Elixir?</a>
+                <a href="#process" class="text-gray-600 hover:text-blue-600 transition duration-300">Our Process</a>
+                <a href="#partner" class="text-gray-600 hover:text-blue-600 transition duration-300">Partner With Us</a>
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out">Contact Us</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden flex items-center px-3 py-2 text-gray-600">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg p-8 z-50 transform translate-x-full md:hidden">
+        <button id="close-menu-button" class="absolute top-4 right-4 text-gray-600">
+            <i data-lucide="x"></i>
+        </button>
+        <nav class="flex flex-col space-y-6 mt-10">
+            <a href="#about" class="text-gray-700 hover:text-blue-600 text-lg">Why Elixir?</a>
+            <a href="#process" class="text-gray-700 hover:text-blue-600 text-lg">Our Process</a>
+            <a href="#partner" class="text-gray-700 hover:text-blue-600 text-lg">Partner With Us</a>
+            <a href="#contact" class="text-gray-700 hover:text-blue-600 text-lg">Contact</a>
+        </nav>
+    </div>
+
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white min-h-screen flex items-center">
+            <div class="container mx-auto px-6 py-24 text-center">
+                <h1 class="text-4xl md:text-7xl font-bold leading-tight mb-4 drop-shadow-lg">Purity in Every Drop</h1>
+                <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto drop-shadow-md">Experience the crisp, refreshing taste of Elixir Alkaline Water, bottled at the source for ultimate hydration.</p>
+                <a href="#about" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full transition duration-300 ease-in-out transform hover:scale-105 text-lg">Drink The Difference</a>
+            </div>
+        </section>
+
+        <!-- Why Elixir? Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Why Choose Elixir?</h2>
+                <p class="section-subtitle">We believe in providing more than just water. We provide a cornerstone for a healthier, more hydrated life, backed by a commitment to quality and purity.</p>
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                         <img src="https://placehold.co/600x400/EBF4FF/3B82F6?text=Pristine+Source" alt="Pristine Water Source" class="rounded-lg mb-6 w-full object-cover">
+                        <h3 class="text-xl font-bold mb-2 flex items-center"><i data-lucide="droplets" class="mr-2 text-blue-600"></i>Pristine Natural Source</h3>
+                        <p class="text-gray-600">Sourced from protected underground springs, ensuring every bottle is free from pollutants and rich in natural minerals.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <img src="https://placehold.co/600x400/EBF4FF/3B82F6?text=Alkaline+Balance" alt="Balanced pH level" class="rounded-lg mb-6 w-full object-cover">
+                        <h3 class="text-xl font-bold mb-2 flex items-center"><i data-lucide="zap" class="mr-2 text-blue-600"></i>Optimal Alkaline pH</h3>
+                        <p class="text-gray-600">Our water is naturally alkaline with a pH of 8+, helping to balance your body's acidity and enhance hydration.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <img src="https://placehold.co/600x400/EBF4FF/3B82F6?text=Lifestyle+Hydration" alt="Person enjoying Elixir water" class="rounded-lg mb-6 w-full object-cover">
+                        <h3 class="text-xl font-bold mb-2 flex items-center"><i data-lucide="heart-pulse" class="mr-2 text-blue-600"></i>Enhanced Vitality</h3>
+                        <p class="text-gray-600">Proper hydration is key to well-being. Elixir supports your active lifestyle, from the gym to the office.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Process Section -->
+        <section id="process" class="bg-white py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">From Source to Bottle: Our Commitment to Quality</h2>
+                <p class="section-subtitle">As a leading water manufacturer, we utilize a state-of-the-art process to ensure that the water you drink is as pure as nature intended.</p>
+                <div class="mt-12 flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/800x600/FFFFFF/3B82F6?text=Modern+Bottling+Facility" alt="Modern water bottling facility" class="rounded-xl shadow-2xl w-full">
+                    </div>
+                    <div class="md:w-1/2 space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-600 text-white rounded-full p-3"><i data-lucide="filter"></i></div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold">Multi-Stage Filtration</h4>
+                                <p class="text-gray-600">Our water undergoes an advanced multi-stage filtration process, including reverse osmosis and UV sterilization, to remove impurities while retaining essential minerals.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                             <div class="flex-shrink-0 bg-blue-600 text-white rounded-full p-3"><i data-lucide="shield-check"></i></div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold">Quality Assurance</h4>
+                                <p class="text-gray-600">We conduct rigorous hourly testing in our in-house labs to ensure every batch meets the highest standards of safety and quality.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                             <div class="flex-shrink-0 bg-blue-600 text-white rounded-full p-3"><i data-lucide="recycle"></i></div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold">Eco-Friendly Bottling</h4>
+                                <p class="text-gray-600">Our bottles are made from 100% recyclable, BPA-free plastic. Our manufacturing process is optimized to minimize our environmental footprint.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner With Us Section -->
+        <section id="partner" class="py-20 bg-blue-600 text-white">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold">Become an Elixir Distributor</h2>
+                 <p class="text-lg mt-4 max-w-3xl mx-auto text-blue-100">Join us in our mission to bring pure, healthy hydration to everyone. We offer competitive pricing and dedicated support for our distribution partners, hotels, and corporate clients.</p>
+                 <a href="#contact" class="mt-8 inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-100">Enquire Now</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Whether you're a customer with a question or a business looking to partner, we're here to help.</p>
+                <div class="max-w-xl mx-auto mt-12 bg-white p-8 md:p-10 rounded-xl shadow-2xl">
+                    <form>
+                        <div class="mb-5">
+                            <label class="block text-gray-700 font-medium mb-2" for="name">Name</label>
+                            <input class="border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-lg shadow-sm w-full py-3 px-4" id="name" type="text" placeholder="Your Name">
+                        </div>
+                        <div class="mb-5">
+                            <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
+                            <input class="border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-lg shadow-sm w-full py-3 px-4" id="email" type="email" placeholder="Your Email">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2" for="message">Message</label>
+                            <textarea class="border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-lg shadow-sm w-full py-3 px-4 h-32" id="message" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full transition duration-300 w-full" type="button">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                 <div class="mb-6 md:mb-0">
+                    <a href="#" class="flex items-center justify-center md:justify-start space-x-2">
+                        <div class="text-4xl font-bold text-blue-500">∞</div>
+                        <div class="flex flex-col -space-y-1">
+                            <span class="text-2xl font-bold tracking-wider">ELIXIR</span>
+                            <span class="text-xs font-semibold text-gray-400 tracking-widest">BEVERAGES</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="mb-6 md:mb-0">
+                    <p class="text-gray-400">&copy; 2025 Elixir Beverages. All Rights Reserved.</p>
+                    <p class="text-gray-500">Kolkata, India</p>
+                </div>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        lucide.createIcons();
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+        });
+
+        // Close menu when a link is clicked
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('translate-x-full');
+            });
+        });
+    </script>
+</body>
+</html>
+
