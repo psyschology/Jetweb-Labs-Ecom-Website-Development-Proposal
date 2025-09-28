@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Jetweb Labs Command Center -->
+    <!-- Application Structure Plan: A comprehensive, single-page internal dashboard for C-suite use. The architecture features a collapsible, mobile-friendly sidebar for navigation and a main content area for detailed service package analysis. This structure is designed for information density and ease of use as a strategic reference tool, not a public-facing page. -->
+    <!-- Visualization & Content Choices: The core of this application is the detailed pricing card component. Each card is an infographic, presenting not just features, but critical internal financial metrics (Making Cost, Gross Profit, Margin) and strategic analysis (Target Client, USP, Market Comparison). This transforms a simple pricing list into a powerful business intelligence tool for the CEO and CFO. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Jetweb Labs - Internal Pricing & Profitability Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --brand-blue: #0ea5e9; --dark-bg: #030712; --content-bg: #111827; --border-color: #374151; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: #f9fafb; }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+        .sidebar { transition: transform 0.3s ease-in-out; }
+        .feature-item { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2322c55e'%3E%3Cpath fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd' /%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: left center; background-size: 1.25rem; padding-left: 1.75rem; }
+        .nav-link.active { background-color: var(--content-bg); color: var(--brand-blue); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="relative min-h-screen md:flex">
+        <!-- Mobile Header -->
+        <div class="md:hidden flex justify-between items-center bg-gray-900 p-4 border-b border-gray-700">
+            <h1 class="text-xl font-bold">Pricing Blueprint</h1>
+            <button id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar bg-gray-900 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-20">
+            <h1 class="text-2xl font-bold px-4">Pricing Blueprint</h1>
+            <nav id="navigation">
+                <a href="#executive-summary" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Executive Summary</a>
+                <a href="#web-dev" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Web Development</a>
+                <a href="#ecommerce-dev" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">E-commerce</a>
+                <a href="#marketing" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Digital Marketing</a>
+                <a href="#enterprise" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Enterprise Services</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4 md:p-10 overflow-y-auto">
+            
+            <section id="executive-summary" class="mb-16">
+                <h2 class="text-4xl font-extrabold mb-4">Executive Summary & Market Positioning</h2>
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-3">Our Core Pricing Strategy</h3>
+                    <p class="text-gray-400 mb-6">Our strategy is to aggressively penetrate the Indian SME market by positioning Jetweb Labs as the premier provider of **high-value, low-cost digital solutions**. We will deliberately undercut the bloated pricing of established agencies while offering a significantly more professional and scalable product than low-end freelancers. Our profitability will be driven by systemized delivery, lean operations, and scaling volume.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <h4 class="text-lg font-semibold text-sky-400 mb-2">Market Research Findings:</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-300">
+                                <li><strong>Freelancers (India):</strong> ₹5,000 - ₹20,000 for a basic site. Quality is inconsistent, support is unreliable.</li>
+                                <li><strong>Small Agencies (Tier 2/3 cities):</strong> ₹25,000 - ₹75,000. Often use outdated tech and templates.</li>
+                                <li><strong>Mid-Size Agencies (Metros):</strong> ₹80,000 - ₹3,00,000+. Professional, but too expensive for our target SMEs.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-sky-400 mb-2">Our Strategic Advantage:</h4>
+                             <ul class="list-disc list-inside space-y-1 text-gray-300">
+                                <li><strong>Price Disruption:</strong> Our `JetLite` and `JetLaunch` packages are priced to be irresistible to the freelancer market.</li>
+                                <li><strong>Technology Superiority:</strong> We offer modern tech (Next.js, Headless CMS) at prices where others offer basic WordPress.</li>
+                                <li><strong>Scalable Model:</strong> By systemizing our process (CTO's boilerplate), we can maintain healthy margins even at lower price points.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="web-dev" class="mb-16">
+                <h2 class="text-4xl font-extrabold mb-8">Service Line: Website Development</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                    
+                    <!-- JetLite -->
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 flex flex-col">
+                        <h3 class="text-2xl font-bold text-sky-400">JetLite</h3>
+                        <p class="text-gray-400 mt-1">The essential digital business card.</p>
+                        <p class="mt-4 text-5xl font-extrabold">₹4,999</p>
+                        <div class="bg-gray-900 p-4 rounded-lg my-6 text-sm">
+                            <h4 class="font-bold text-gray-400 uppercase tracking-wider mb-2">CFO View</h4>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Est. Making Cost:</span><span class="font-semibold text-red-400">₹1,500</span></div>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Gross Profit:</span><span class="font-semibold text-green-400">₹3,499</span></div>
+                            <div class="flex justify-between pt-1"><span>Profit Margin:</span><span class="font-semibold text-green-400">70%</span></div>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-semibold mb-3">Key Features:</p>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="feature-item">Single Page Website</li>
+                                <li class="feature-item">Mobile First Design</li>
+                                <li class="feature-item">Contact Form & WhatsApp Integration</li>
+                                <li class="feature-item">Basic Hosting Setup</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                             <p class="font-semibold text-sm text-gray-400">Target Client: <span class="text-white">Solo freelancers, home bakers, consultants.</span></p>
+                             <p class="font-semibold text-sm text-gray-400 mt-2">USP: <span class="text-white">Professionalism of an agency at the price of a freelancer.</span></p>
+                        </div>
+                    </div>
+
+                    <!-- JetLaunch -->
+                    <div class="bg-gray-800 p-6 rounded-xl border-2 border-sky-500 flex flex-col relative">
+                        <p class="absolute top-0 -translate-y-1/2 bg-sky-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</p>
+                        <h3 class="text-2xl font-bold text-sky-400">JetLaunch</h3>
+                        <p class="text-gray-400 mt-1">The complete foundation for a new business.</p>
+                        <p class="mt-4 text-5xl font-extrabold">₹19,999</p>
+                        <div class="bg-gray-900 p-4 rounded-lg my-6 text-sm">
+                            <h4 class="font-bold text-gray-400 uppercase tracking-wider mb-2">CFO View</h4>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Est. Making Cost:</span><span class="font-semibold text-red-400">₹8,000</span></div>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Gross Profit:</span><span class="font-semibold text-green-400">₹11,999</span></div>
+                            <div class="flex justify-between pt-1"><span>Profit Margin:</span><span class="font-semibold text-green-400">60%</span></div>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-semibold mb-3">Key Features:</p>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="feature-item">Up to 5 Pages (Home, About, etc.)</li>
+                                <li class="feature-item">Custom UI/UX Design</li>
+                                <li class="feature-item">Headless CMS for Self-Updates</li>
+                                <li class="feature-item">Basic On-Page SEO</li>
+                                <li class="feature-item">1 Month of Technical Support</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                            <p class="font-semibold text-sm text-gray-400">Target Client: <span class="text-white">New startups, restaurants, small agencies.</span></p>
+                            <p class="font-semibold text-sm text-gray-400 mt-2">USP: <span class="text-white">Delivering modern, editable websites that outperform competitors at double the price.</span></p>
+                        </div>
+                    </div>
+
+                    <!-- JetScale -->
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 flex flex-col">
+                        <h3 class="text-2xl font-bold text-sky-400">JetScale</h3>
+                        <p class="text-gray-400 mt-1">For businesses ready to optimize and grow.</p>
+                        <p class="mt-4 text-5xl font-extrabold">₹49,999</p>
+                         <div class="bg-gray-900 p-4 rounded-lg my-6 text-sm">
+                            <h4 class="font-bold text-gray-400 uppercase tracking-wider mb-2">CFO View</h4>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Est. Making Cost:</span><span class="font-semibold text-red-400">₹20,000</span></div>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Gross Profit:</span><span class="font-semibold text-green-400">₹29,999</span></div>
+                            <div class="flex justify-between pt-1"><span>Profit Margin:</span><span class="font-semibold text-green-400">60%</span></div>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-semibold mb-3">Key Features:</p>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="feature-item">Up to 10 Pages & Blog</li>
+                                <li class="feature-item">Advanced Animations & UI</li>
+                                <li class="feature-item">Google Analytics & Search Console Setup</li>
+                                <li class="feature-item">Performance Optimization</li>
+                                <li class="feature-item">3 Months of Technical Support</li>
+                            </ul>
+                        </div>
+                         <div class="mt-6">
+                             <p class="font-semibold text-sm text-gray-400">Target Client: <span class="text-white">Established businesses, funded startups.</span></p>
+                             <p class="font-semibold text-sm text-gray-400 mt-2">USP: <span class="text-white">A complete growth-oriented web presence with built-in analytics and support.</span></p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="ecommerce-dev" class="mb-16">
+                 <h2 class="text-4xl font-extrabold mb-8">Service Line: E-commerce Development</h2>
+                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                    <!-- JetStore -->
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 flex flex-col">
+                        <h3 class="text-2xl font-bold text-sky-400">JetStore</h3>
+                        <p class="text-gray-400 mt-1">Launch your online store fast.</p>
+                        <p class="mt-4 text-5xl font-extrabold">₹24,999</p>
+                        <div class="bg-gray-900 p-4 rounded-lg my-6 text-sm">
+                            <h4 class="font-bold text-gray-400 uppercase tracking-wider mb-2">CFO View</h4>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Est. Making Cost:</span><span class="font-semibold text-red-400">₹10,000</span></div>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Gross Profit:</span><span class="font-semibold text-green-400">₹14,999</span></div>
+                            <div class="flex justify-between pt-1"><span>Profit Margin:</span><span class="font-semibold text-green-400">60%</span></div>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-semibold mb-3">Features:</p>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="feature-item">Shopify / WooCommerce Setup</li>
+                                <li class="feature-item">Theme Customization</li>
+                                <li class="feature-item">Up to 50 Products Upload</li>
+                                <li class="feature-item">Payment Gateway Integration</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                             <p class="font-semibold text-sm text-gray-400">Target Client: <span class="text-white">D2C brands, Instagram sellers moving online.</span></p>
+                             <p class="font-semibold text-sm text-gray-400 mt-2">USP: <span class="text-white">The fastest, most affordable way to get a professional, sales-ready online store.</span></p>
+                        </div>
+                    </div>
+                     <!-- JetCommerce -->
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 flex flex-col">
+                        <h3 class="text-2xl font-bold text-sky-400">JetCommerce</h3>
+                        <p class="text-gray-400 mt-1">A custom-designed e-commerce engine.</p>
+                        <p class="mt-4 text-5xl font-extrabold">₹99,999</p>
+                        <div class="bg-gray-900 p-4 rounded-lg my-6 text-sm">
+                            <h4 class="font-bold text-gray-400 uppercase tracking-wider mb-2">CFO View</h4>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Est. Making Cost:</span><span class="font-semibold text-red-400">₹45,000</span></div>
+                            <div class="flex justify-between border-b border-gray-700 py-1"><span>Gross Profit:</span><span class="font-semibold text-green-400">₹54,999</span></div>
+                            <div class="flex justify-between pt-1"><span>Profit Margin:</span><span class="font-semibold text-green-400">55%</span></div>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-semibold mb-3">Features:</p>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="feature-item">Custom Storefront UI/UX</li>
+                                <li class="feature-item">Unlimited Products</li>
+                                <li class="feature-item">Advanced App/Plugin Integrations</li>
+                                <li class="feature-item">Full SEO & Analytics Suite</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                            <p class="font-semibold text-sm text-gray-400">Target Client: <span class="text-white">Serious D2C brands, businesses scaling up.</span></p>
+                            <p class="font-semibold text-sm text-gray-400 mt-2">USP: <span class="text-white">A bespoke e-commerce experience that boosts conversion rates, for a fraction of agency costs.</span></p>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+            
+            <section id="marketing" class="mb-16">
+                 <h2 class="text-4xl font-extrabold mb-8">Service Line: Digital Marketing (Monthly Retainers)</h2>
+                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                    <!-- JetBoost -->
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 flex flex-col">
+                        <h3 class="text-2xl font-bold text-sky-400">JetBoost</h3>
+                        <p class="text-gray-400 mt-1">Social Media Management.</p>
+                        <p class="mt-4 text-4xl font-extrabold">₹15,000<span class="text-base font-medium text-gray-400">/mo</span></p>
+                        <div class="bg-gray-900 p-4 rounded-lg my-6 text-sm">
+                            <h4 class="font-bold text-gray-400 uppercase tracking-wider mb-2">CFO View</h4>
+                            <div class="flex justify-between pt-1"><span>Profit Margin Target:</span><span class="font-semibold text-green-400">40%</span></div>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-semibold mb-3">Deliverables:</p>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="feature-item">2 Platforms (e.g., Insta + FB)</li>
+                                <li class="feature-item">12 Posts per Month</li>
+                                <li class="feature-item">Community Management</li>
+                                <li class="feature-item">Monthly Performance Report</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- JetIgnite -->
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 flex flex-col">
+                        <h3 class="text-2xl font-bold text-sky-400">JetIgnite</h3>
+                        <p class="text-gray-400 mt-1">SEO & Content Marketing.</p>
+                        <p class="mt-4 text-4xl font-extrabold">₹35,000<span class="text-base font-medium text-gray-400">/mo</span></p>
+                        <div class="bg-gray-900 p-4 rounded-lg my-6 text-sm">
+                            <h4 class="font-bold text-gray-400 uppercase tracking-wider mb-2">CFO View</h4>
+                            <div class="flex justify-between pt-1"><span>Profit Margin Target:</span><span class="font-semibold text-green-400">50%</span></div>
+                        </div>
+                        <div class="flex-grow">
+                             <p class="font-semibold mb-3">Deliverables:</p>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="feature-item">Full SEO Audit & Setup</li>
+                                <li class="feature-item">4 High-Quality Blog Posts/mo</li>
+                                <li class="feature-item">On-Page & Technical SEO</li>
+                                <li class="feature-item">Link Building Outreach</li>
+                            </ul>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+            <section id="enterprise">
+                 <h2 class="text-4xl font-extrabold mb-8">Enterprise & Custom Solutions</h2>
+                 <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 text-center">
+                    <h3 class="text-3xl font-bold text-sky-400">JetEnterprise</h3>
+                    <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-300">For complex challenges, we provide bespoke solutions. This includes custom software development, marketplace creation, mobile apps, and annual maintenance contracts (AMCs). All enterprise projects are custom-quoted based on a detailed scope of work.</p>
+                    <div class="bg-gray-900 p-4 rounded-lg my-6 text-sm max-w-sm mx-auto">
+                        <h4 class="font-bold text-gray-400 uppercase tracking-wider mb-2">CFO View</h4>
+                        <div class="flex justify-between border-b border-gray-700 py-1"><span>Minimum Project Value:</span><span class="font-semibold text-white">₹1,50,000</span></div>
+                        <div class="flex justify-between pt-1"><span>Target Profit Margin:</span><span class="font-semibold text-green-400">60%+</span></div>
+                    </div>
+                 </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const menuButton = document.getElementById('mobile-menu-button');
+
+            menuButton.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+
+            const sections = document.querySelectorAll('main section');
+            const navLinks = document.querySelectorAll('#navigation a');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: "-50% 0px -50% 0px" });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
